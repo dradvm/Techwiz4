@@ -4,7 +4,7 @@ import style from "./Header.module.scss";
 function Header() {
   return (
     <h1 className={clsx(style["header"])}>
-      Header
+      Edited Header
     </h1>
   );
 }
