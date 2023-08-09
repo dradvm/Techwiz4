@@ -1,19 +1,22 @@
 import { createBrowserRouter } from 'react-router-dom';
 import App from "./App.js"
 import Home from './pages/Home/Home';
-import About from './pages/About/About';
+import Checkout from './pages/Checkout/Checkout.js';
+import GlobalStyles from './components/GlobalStyles/GlobalStyles.js';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App/>,
+    element: <GlobalStyles>
+      <App/>
+    </GlobalStyles>,
     children: [
         {
-            path: "/",
-            element: <Home/>
+          path: "/",
+          element: <Home/>
         },
         {
-            path: "/about",
-            element: <About></About>
+          path: "/checkout",
+          element: <Checkout/>
         }
     ]
   }

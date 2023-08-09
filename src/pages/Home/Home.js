@@ -1,11 +1,12 @@
-import clsx from "clsx";
-import style from "./Home.module.scss";
+// import clsx from "clsx";
+// import style from "./Home.module.scss";
+import TopPreviewSection from "@components/TopPreviewSection/TopPreviewSection";
 
 function Home() {
   return (
-    <h1 className={clsx(style["home"])}>
-      Home
-    </h1>
+    <>
+      <TopPreviewSection></TopPreviewSection>
+    </>
   );
 }
 
