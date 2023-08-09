@@ -8,16 +8,24 @@
     height: 20px;
     line-height: 1;
 }
+.header {
+    background: rgb(211,255,217);
+    background: linear-gradient(180deg, rgba(211,255,217,.5) 0%, rgba(255,255,255,1) 70%);
+    min-height: 400px;
+    z-index: -1;
+}
 .nav-bar {
+    z-index: 100;
     &__item {
         font-weight: 600;
         transition: .3s ease-in;
         cursor: pointer;
         position: relative;
         text-align: center;
+        color: black;
         &--home {
-            color: green;
-        }
+            color: green !important;
+        } 
     }
     &__item:not(:last-child){
         &::after {

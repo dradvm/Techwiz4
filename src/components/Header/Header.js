@@ -3,26 +3,31 @@ import { faBagShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import clsx from "clsx";
 import { Container, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import HeaderBg from "../HeaderBg/HeaderBg";
 
 function Header() {
   return (
-    <Container className={clsx("position-absolute", "top-0", "start-0", "end-0")}>
-      <Row className={clsx("align-items-center", "mt-5")}>
-        <Col xs={8}>Logo</Col>
-        <Col className={clsx("align-items-center")} >
-          <div className={clsx(style["nav-bar"], "d-flex", "justify-content-between", "align-items-center")}>
-            <div className={clsx(style["nav-bar__item"], style["nav-bar__item--home"])}>Home</div>
-            <div className={clsx(style["nav-bar__item"])}>About</div>
-            <div className={clsx(style["nav-bar__item"])}>Contact Us</div>
-            <div className={clsx(style["nav-bar__item"])}>Feedback</div>
-            <div className={clsx(style["nav-bar__item"], "position-relative")}>
-              <FontAwesomeIcon icon={faBagShopping} size="xl" />
-              <div className={clsx(style["badge"], "position-absolute", "rounded-circle", "d-flex", "justify-content-center", "align-items-center")}>1</div>
+    <>
+      <HeaderBg/>
+      <Container>
+        <Row className={clsx("align-items-center", "mt-5")}>
+          <Col xs={8}>Logo</Col>
+          <Col className={clsx("align-items-center")} >
+            <div className={clsx(style["nav-bar"], "d-flex", "justify-content-between", "align-items-center")}>
+              <Link to = "/" className={clsx(style["nav-bar__item"], "text-decoration-none", style["nav-bar__item--home"])}>Home</Link>
+              <Link to = "/" className={clsx(style["nav-bar__item"], "text-decoration-none")}>About</Link>
+              <Link to = "/contact" className={clsx(style["nav-bar__item"], "text-decoration-none")}>Contact Us</Link>
+              <Link to = "/" className={clsx(style["nav-bar__item"], "text-decoration-none")}>Feedback</Link>
+              <Link to = "/" className={clsx(style["nav-bar__item"], "text-decoration-none", "position-relative")}>
+                <FontAwesomeIcon icon={faBagShopping} size="xl" />
+                <div className={clsx(style["badge"], "position-absolute", "rounded-circle", "d-flex", "justify-content-center", "align-items-center")}>1</div>
+              </Link>
             </div>
-          </div>
-        </Col>
-      </Row>
-    </Container>
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 }
 

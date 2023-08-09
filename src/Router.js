@@ -3,6 +3,7 @@ import App from "./App.js"
 import Home from './pages/Home/Home';
 import Checkout from './pages/Checkout/Checkout.js';
 import GlobalStyles from './components/GlobalStyles/GlobalStyles.js';
+import ContactUs from './pages/ContactUs/ContactUs.js';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
         {
           path: "/checkout",
           element: <Checkout/>
+        },
+        {
+          path: "/contact",
+          element: <ContactUs/>
         }
     ]
   }

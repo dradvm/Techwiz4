@@ -29,7 +29,7 @@ function Footer() {
             />
             
             <InputGroup.Text id="basic-addon1">
-              <FontAwesomeIcon icon = {faPaperPlane}/>
+              <FontAwesomeIcon icon = {faPaperPlane} style={{cursor: "pointer"}}/>
             </InputGroup.Text>
           </InputGroup>
       </div>

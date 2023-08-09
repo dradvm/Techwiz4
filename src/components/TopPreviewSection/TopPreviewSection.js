@@ -7,17 +7,16 @@ import MyButton from "../MyButton/MyButton";
 
 function TopPreviewSection() {
   return (
-    <Container className={clsx(style["top-preview-section"])} fluid>
-      <div className="py-5"></div>
+    <Container className={clsx(style["top-preview-section"], "mt-4")} fluid>
       <div className="container">
         <Row>
           <Col className={clsx("d-flex", "", "justify-content-center", "flex-column")}>
             <div>
-            <h1 className={clsx(style["big-title"])}>
+              <h1 className={clsx(style["big-title"])}>
               <div><span className={clsx(style["green"])}>Green</span> Living</div>
               <div>Explore <span className={clsx(style["green"])}>Now!</span></div>
             </h1>
-            <h6 className={clsx("mt-4", "mb-5")} style={{textAlign: "justify"}}>
+            <h6 className={clsx("mt-4")} style={{textAlign: "justify"}}>
             Elevate your living space with our meticulously chosen indoor plants, a harmonious fusion of nature and design, perfect for plant enthusiasts seeking to infuse vitality and elegance into their surroundings.
             </h6>
             <MyButton/>
