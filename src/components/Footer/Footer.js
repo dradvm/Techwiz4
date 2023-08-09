@@ -6,7 +6,56 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-regular-svg-icons";
+import { useState } from "react";
 function Footer() {
+  const [subEmail, setSubEmail] = useState('');
+  function emailHandleOnEnter(e)
+  {
+    if (e.key === 'Enter')
+    {
+      let regex = /^[a-zA-Z]+[0-9a-zA-Z]*@[a-zA-Z0-9]+.[a-zA-Z]+$/;
+      if (regex.test(subEmail))
+      {
+        let subEmails = JSON.parse(localStorage.getItem('subEmails')) || [];
+        if (subEmails.includes(subEmail))
+        {
+          alert('This email has subcribed already.');
+        }
+        else
+        {
+          subEmails = [...subEmails, subEmail];
+          localStorage.setItem('subEmails', JSON.stringify(subEmails));
+          setSubEmail('');
+        }
+      }
+      else
+      {
+        alert('Please retype email.');
+      }
+    }
+  }
+  function emailHandleOnClick()
+  {
+    let regex = /^[a-zA-Z]+[0-9a-zA-Z]*@[a-zA-Z0-9]+.[a-zA-Z]+$/;
+    if (regex.test(subEmail))
+    {
+      let subEmails = JSON.parse(localStorage.getItem('subEmails')) || [];
+      if (subEmails.includes(subEmail))
+      {
+        alert('This email has subcribed already.');
+      }
+      else
+      {
+        subEmails = [...subEmails, subEmail];
+        localStorage.setItem('subEmails', JSON.stringify(subEmails));
+        setSubEmail('');
+      }
+    }
+    else
+    {
+      alert('Please retype email.');
+    }
+  }
   return (
     <Container fluid className={clsx(style["thank-you"], "d-flex", "flex-column", "text-white", "align-items-center", "py-5")}>
       <div className={clsx(style["nav-bar"], "d-flex")}>
@@ -26,9 +75,14 @@ function Footer() {
               placeholder="Enter your email..."
               aria-label="Enter your email..."
               aria-describedby="basic-addon1"
+              value={subEmail}
+              onChange={(e) => setSubEmail(e.target.value)}
+              onKeyDown={(e) => emailHandleOnEnter(e)}
             />
             
-            <InputGroup.Text id="basic-addon1">
+            <InputGroup.Text id="basic-addon1"
+              onClick={emailHandleOnClick}
+            >
               <FontAwesomeIcon icon = {faPaperPlane} style={{cursor: "pointer"}}/>
             </InputGroup.Text>
           </InputGroup>
