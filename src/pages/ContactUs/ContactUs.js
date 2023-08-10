@@ -4,6 +4,7 @@ import { Col, Container, Row, Button, Stack } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLocationDot, faPhoneVolume } from "@fortawesome/free-solid-svg-icons";
+import spImg from "@images/contact-us-support-img.png"
 function ContactUs() {
   return (
     <Container className={clsx("my-5", "py-5", "w-75", style["contact-us"])}>
@@ -24,8 +25,8 @@ function ContactUs() {
             <Button variant="success" className="w-100">Submit</Button>
           </Form>
         </Col>
-        <Col>
-
+        <Col className="d-flex justify-content-center align-items-center">
+          <img src={spImg} alt="support-img" className="w-75" />
         </Col>
       </Row>
       <div className="mt-5">
