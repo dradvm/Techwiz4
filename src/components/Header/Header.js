@@ -19,7 +19,7 @@ function Header() {
               <Link to = "/" className={clsx(style["nav-bar__item"], "text-decoration-none", style["nav-bar__item--home"])}>Home</Link>
               <Link to = "/shop" className={clsx(style["nav-bar__item"], "text-decoration-none")}>Shopping</Link>
               <Link to = "/contact" className={clsx(style["nav-bar__item"], "text-decoration-none")}>Contact Us</Link>
-              <Link to = "/" className={clsx(style["nav-bar__item"], "text-decoration-none")}>Feedback</Link>
+              <Link to = "/feedback" className={clsx(style["nav-bar__item"], "text-decoration-none")}>Feedback</Link>
               
             </div>
           </Col>

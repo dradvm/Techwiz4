@@ -1,0 +1,9 @@
+.feedback {
+    background: url("../../images/bg-feedback.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    &__body {
+        background-color: rgba(0,0,0, .5);
+    }
+}

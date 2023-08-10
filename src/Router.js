@@ -4,6 +4,7 @@ import Home from './pages/Home/Home';
 import GlobalStyles from './components/GlobalStyles/GlobalStyles.js';
 import ContactUs from './pages/ContactUs/ContactUs.js';
 import ShopCatalog from './pages/ShopCatalog/ShopCatalog.js';
+import Feedback from './pages/Feedback/Feedback.js';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
         {
           path: "/contact",
           element: <ContactUs/>
+        },
+        {
+          path: "/feedback",
+          element: <Feedback/>
         }
     ]
   }
