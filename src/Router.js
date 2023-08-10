@@ -1,9 +1,9 @@
 import { createBrowserRouter } from 'react-router-dom';
 import App from "./App.js"
 import Home from './pages/Home/Home';
-import Checkout from './pages/Checkout/Checkout.js';
 import GlobalStyles from './components/GlobalStyles/GlobalStyles.js';
 import ContactUs from './pages/ContactUs/ContactUs.js';
+import ShopCatalog from './pages/ShopCatalog/ShopCatalog.js';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -16,8 +16,8 @@ const router = createBrowserRouter([
           element: <Home/>
         },
         {
-          path: "/checkout",
-          element: <Checkout/>
+          path: "/shop",
+          element: <ShopCatalog/>
         },
         {
           path: "/contact",

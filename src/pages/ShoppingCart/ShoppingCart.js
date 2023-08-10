@@ -1,12 +1,10 @@
-import clsx from "clsx";
-import style from "./Home.module.scss";
+// import clsx from "clsx";
+// import style from "./ShopCatalog.module.scss";
 
-function Home() {
-  return (
-    <h1 className={clsx(style["home"])}>
-      Home
-    </h1>
-  );
-}
+// function ShopCatalog() {
+//   return (
+//     <>ABC</>
+//   );
+// }
 
-export default Home
+// export default ShopCatalog

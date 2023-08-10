@@ -1,14 +1,32 @@
-.my-button {
+.icon {
+    transition: .2s;
+    cursor: pointer;
+    padding: 8px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    &:hover {
+        color: white;
+        border-radius: 50%;
+        background-color: var(--secondary-color);
+        margin-top: -2px;
+    }
+    &:active {
+        margin-top: -1px;
+    }
+}
+.feature-items {
+    button {
     background-color: var(--primary-color);
     border: 0;
-    border-radius: 12px;
+    border-radius: 56px;
     color: #fff;
     cursor: pointer;
     display: inline-block;
     font-size: 18px;
     font-weight: 600;
     outline: 0;
-    padding: 16px 48px;
+    padding: 16px 21px;
     position: relative;
     text-align: center;
     text-decoration: none;
@@ -18,7 +36,7 @@
     touch-action: manipulation;
     }
 
-    .my-button:before {
+    button:before {
     background-color: initial;
     background-image: linear-gradient(#fff 0, rgba(255, 255, 255, 0) 100%);
     border-radius: 125px;
@@ -32,7 +50,7 @@
     width: 92%;
     }
 
-    .my-button:hover {
+    button:hover {
     box-shadow: rgba(255, 255, 255, .2) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
     transform: scale(1.05);
     }
@@ -42,3 +60,4 @@
         padding: 16px 48px;
     }
     }
+}

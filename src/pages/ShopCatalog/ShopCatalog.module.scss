@@ -1,0 +1,20 @@
+.custom-drop-down {
+    button {
+        color: black !important;
+        background-color: white !important;
+        border-radius: 4px;
+        border: 1px solid black !important;
+        padding: 4px 16px;
+        &:hover {
+            border: 1px solid black !important;
+        }
+        &:active {
+            border: 1px solid black !important;
+        }
+    }
+    a {
+        &:active {
+            background-color: var(--primary-color) !important;
+        }
+    }
+}
