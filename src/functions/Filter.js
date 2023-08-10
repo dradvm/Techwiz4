@@ -1,78 +1,75 @@
-let productsList = [ //test mảng sản phẩm, thay bằng mảng thật import vào
-    [1,
+let productList = //test mảng sản phẩm, thay bằng mảng thật import vào
+[ 
     {
-        Categories: ["Indoor", "Succulent"],
-        pName: 'Elephant ears',
-        price: 35
-    }],
-    [2,
+        categories: ['Seeds', "Planting Essentials"],
+        name: 'Elephant ears',
+        price: 0
+    },
     {
-        Categories: ["Outdoor", "Need light"],
-        pName: 'Elephant ears',
-        price: 35
-    }],
-    [3,
+        categories: ["Free Shipping", "Seeds"],
+        name: 'Elephant ears',
+        price: 1
+    },
     {
-        Categories: ["Medicine", "Succulent"],
-        pName: 'Elephant ears',
-        price: 35
-    }],
-    [4,
+        categories: ["Planting Essentials", "Free Shipping"],
+        name: 'Elephant ears',
+        price: 2
+    },
     {
-        Categories: ["Apple", "Outdoor"],
-        pName: 'Elephant ears',
-        price: 35
-    }],
-    [5,
+        categories: ["Seeds", "Planting Essentials"],
+        name: 'Elephant ears',
+        price: 3
+    },
     {
-        Categories: ["Cactus", "Outdoot"],
-        pName: 'Elephant ears',
-        price: 35
-    }],
-    [6,
+        categories: ["Free Shipping", "Seeds"],
+        name: 'Elephant ears',
+        price: 4
+    },
     {
-        Categories: ["Cactus", "Outdoot"],
-        pName: 'Elephant ears',
-        price: 35
-    }],
-    [7,
+        categories: ["Planting Essentials", "Free Shipping"],
+        name: 'Elephant ears',
+        price: 5
+    },
     {
-        Categories: ["Cactus", "Outdoot"],
-        pName: 'Elephant ears',
-        price: 35
-    }],
-    [8,
+        categories: ["Seeds", "Planting Essentials"],
+        name: 'Elephant ears',
+        price: 6
+    },
     {
-        Categories: ["Cactus", "Outdoot"],
-        pName: 'Elephant ears',
-        price: 35
-    }],
-    [9,
+        categories: ["Free Shipping", "Seeds"],
+        name: 'Elephant ears',
+        price: 7
+    },
     {
-        Categories: ["Cactus", "Outdoot"],
-        pName: 'Elephant ears',
-        price: 35
-    }]
-];
-
-function productFilter(criterias) //criterias là mảng categories
-{
-    if (criterias.length === 0) //Nếu criterias là mảng rỗng thì trả về toàn bộ sản phẩm
-    {
-        return productsList;
+        categories: ["Planting Essentials", "Free Shipping"],
+        name: 'Elephant ears',
+        price: 8
     }
-    productsList = productsList.filter((item) =>
+];
+let categoryList = 
+[
+    "Planting Essentials",
+    "Free Shipping",
+    "Seeds"
+];
+function productFilter(criterias)
+{
+    if (criterias.length === 0)
     {
-        let check = false;
-        item[1].Categories.forEach((cat) =>
+        return productList;
+    }
+    let res = productList.filter((item) =>
+    {
+        let check = true;
+        criterias.forEach((cat) =>
         {
-            if (check)
+            if (!check)
             {
                 return;
             }
-            if (criterias.includes(cat))
+            if (!item.categories.includes(cat))
             {
-                check = true;
+                check = false;
             }
         });
         if (check)
@@ -80,7 +77,7 @@ function productFilter(criterias) //criterias là mảng categories
             return item;
         }
     });
-    return productsList;
+    return res;
 }
 export default productFilter;
-export {productsList};
+export {productList, categoryList};

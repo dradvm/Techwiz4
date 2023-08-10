@@ -11,7 +11,7 @@ function Item(props) {
         <div className={clsx("mb-2 p-2 bg-secondary-color text-white fw-bold text-center", style["details"])}>VIEW DETAILS</div>
         <div className={clsx("px-3 py-2 bg-white w-100 border d-flex justify-content-between align-items-center", style["group"])}>
           <div>
-            <div className="">{props.product.pName}</div>
+            <div className="">{props.product.name}</div>
             <div className="fs-5 fw-bold">{'$' + props.product.price}</div>
           </div>
           <FontAwesomeIcon icon={faShoppingCart} className={clsx(style["icon"])}/>
