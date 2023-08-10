@@ -1,17 +1,62 @@
+let productsList = [ //test mảng sản phẩm, thay bằng mảng thật import vào
+    [1,
+    {
+        Categories: ["Indoor", "Succulent"],
+        pName: 'Elephant ears',
+        price: 35
+    }],
+    [2,
+    {
+        Categories: ["Outdoor", "Need light"],
+        pName: 'Elephant ears',
+        price: 35
+    }],
+    [3,
+    {
+        Categories: ["Medicine", "Succulent"],
+        pName: 'Elephant ears',
+        price: 35
+    }],
+    [4,
+    {
+        Categories: ["Apple", "Outdoor"],
+        pName: 'Elephant ears',
+        price: 35
+    }],
+    [5,
+    {
+        Categories: ["Cactus", "Outdoot"],
+        pName: 'Elephant ears',
+        price: 35
+    }],
+    [6,
+    {
+        Categories: ["Cactus", "Outdoot"],
+        pName: 'Elephant ears',
+        price: 35
+    }],
+    [7,
+    {
+        Categories: ["Cactus", "Outdoot"],
+        pName: 'Elephant ears',
+        price: 35
+    }],
+    [8,
+    {
+        Categories: ["Cactus", "Outdoot"],
+        pName: 'Elephant ears',
+        price: 35
+    }],
+    [9,
+    {
+        Categories: ["Cactus", "Outdoot"],
+        pName: 'Elephant ears',
+        price: 35
+    }]
+];
+
 function productFilter(criterias) //criterias là mảng categories
 {
-    let productsList = [ //test mảng sản phẩm, thay bằng mảng thật import vào
-        [1,
-        {Categories: ["Indoor", "Succulent"]}],
-        [2,
-        {Categories: ["Outdoor", "Need light"]}],
-        [3,
-        {Categories: ["Medicine", "Succulent"]}],
-        [4,
-        {Categories: ["Apple", "Outdoor"]}],
-        [5,
-        {Categories: ["Cactus", "Outdoot"]}]
-    ];
     if (criterias.length === 0) //Nếu criterias là mảng rỗng thì trả về toàn bộ sản phẩm
     {
         return productsList;
@@ -38,3 +83,4 @@ function productFilter(criterias) //criterias là mảng categories
     return productsList;
 }
 export default productFilter;
+export {productsList};

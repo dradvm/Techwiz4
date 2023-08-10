@@ -6,9 +6,9 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import Item from "../../components/Item/Item";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDeleteLeft } from "@fortawesome/free-solid-svg-icons";
+import productFilter from './../../functions/Filter.js';
 function ShopCatalog() {
-
-
+  var productArr = productFilter([]); //Để tạm chưa có tag nên không có filter
   return (
     <Container className="d-flex flex-column align-items-center my-5 py-5">
       <div className="d-flex justify-content-center"><img src={bigImg} alt="big-img" className="w-50" /></div>
@@ -47,13 +47,9 @@ function ShopCatalog() {
         <div className={clsx(style["custom-drop-down"])}><button disabled>19 Product</button></div>
       </div>
       <div className="row w-100 mt-4 gy-4">
-        <div className="col-3" style={{ height: "400px" }}><Item></Item></div>
-        <div className="col-3" style={{ height: "400px" }}><Item></Item></div>
-        <div className="col-3" style={{ height: "400px" }}><Item></Item></div>
-        <div className="col-3" style={{ height: "400px" }}><Item></Item></div>
-        <div className="col-3" style={{ height: "400px" }}><Item></Item></div>
-        <div className="col-3" style={{ height: "400px" }}><Item></Item></div>
-        <div className="col-3" style={{ height: "400px" }}><Item></Item></div>
+        {productArr.map((item) =>
+          <div className="col-3" style={{ height: "400px" }} key={item[0]}><Item product={item[1]}></Item></div>
+        )}
       </div>
     </Container>
   );

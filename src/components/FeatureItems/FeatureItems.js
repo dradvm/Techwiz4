@@ -6,7 +6,15 @@ import 'swiper/css/pagination';
 import { Autoplay } from 'swiper/modules';
 import { Container } from 'react-bootstrap';
 import Item from '../Item/Item';
+import { productsList } from '../../functions/Filter'; //Mảng test, thay bằng list thật sau
 function FeatureItems() {
+  let featuredProducts = productsList.map((item, index) => 
+  {
+    if (index < 10)
+    {
+      return item;
+    }
+  })
   return (
       <Container className="py-5">
         <div className="d-flex align-items-center justify-content-between">
@@ -24,33 +32,11 @@ function FeatureItems() {
           }}
           className="mySwiper mt-5"
         >
-          <SwiperSlide style={{height: "400px"}}>
-            <Item></Item>
-          </SwiperSlide>
-          <SwiperSlide style={{height: "400px"}}>
-            <Item></Item>
-          </SwiperSlide>
-          <SwiperSlide style={{height: "400px"}}>
-            <Item></Item>
-          </SwiperSlide>
-          <SwiperSlide style={{height: "400px"}}>
-            <Item></Item>
-          </SwiperSlide>
-          <SwiperSlide style={{height: "400px"}}>
-            <Item></Item>
-          </SwiperSlide>
-          <SwiperSlide style={{height: "400px"}}>
-            <Item></Item>
-          </SwiperSlide>
-          <SwiperSlide style={{height: "400px"}}>
-            <Item></Item>
-          </SwiperSlide>
-          <SwiperSlide style={{height: "400px"}}>
-            <Item></Item>
-          </SwiperSlide>
-          <SwiperSlide style={{height: "400px"}}>
-            <Item></Item>
-          </SwiperSlide>
+          {featuredProducts.map((item) =>
+            <SwiperSlide style={{height: "400px"}} key={item[0]}>
+            <Item product={item[1]}></Item>
+            </SwiperSlide>
+          )}
         </Swiper>
     </Container>
   );
