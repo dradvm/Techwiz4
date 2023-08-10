@@ -4,6 +4,8 @@ import bigImg from "@images/big-shopping-img.jpg"
 import { Container} from "react-bootstrap";
 import Dropdown from 'react-bootstrap/Dropdown';
 import Item from "../../components/Item/Item";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDeleteLeft } from "@fortawesome/free-solid-svg-icons";
 function ShopCatalog() {
 
 
@@ -23,17 +25,24 @@ function ShopCatalog() {
             <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-        <Dropdown className={clsx(style["custom-drop-down"], "ms-3")}>
-          <Dropdown.Toggle variant="primary" id="dropdown-basic">
-            Filter: {}
-          </Dropdown.Toggle>
+        <div className="ms-3 d-flex align-items-center">
+          <Dropdown className={clsx(style["custom-drop-down"])}>
+            <Dropdown.Toggle variant="primary" id="dropdown-basic">
+              Filter: {}
+            </Dropdown.Toggle>
 
-          <Dropdown.Menu>
-            <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
+            <Dropdown.Menu>
+              <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+              <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+              <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+          <div className={clsx(style["filter"], "ms-3", "d-flex","align-items-center")}>
+            <div className={clsx(style["filter__item"])}><span>ABC</span> <FontAwesomeIcon icon={faDeleteLeft} className={clsx(style["icon"])} /></div>
+            <div className={clsx(style["filter__item"])}><span>ABC</span> <FontAwesomeIcon icon={faDeleteLeft} className={clsx(style["icon"])} /></div>
+            <div className={clsx(style["filter__item"])}><span>ABC</span> <FontAwesomeIcon icon={faDeleteLeft} className={clsx(style["icon"])} /></div>
+          </div>
+        </div>
         </div>
         <div className={clsx(style["custom-drop-down"])}><button disabled>19 Product</button></div>
       </div>

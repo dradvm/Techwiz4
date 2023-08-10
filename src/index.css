@@ -13,7 +13,7 @@ code {
 }
 :root {
   --primary-color: rgb(48, 105, 75);
-  --secondary-color: rgb(95,34,49);
+  --secondary-color: rgb(74,37,17);
 }
 
 .text-primary-color {
@@ -22,4 +22,13 @@ code {
 
 .text-secondary-color {
   color: var(--secondary-color);
+}
+
+
+.bg-primary-color {
+  background-color: var(--primary-color);
+}
+
+.bg-secondary-color {
+  background-color: var(--secondary-color);
 }

@@ -26,11 +26,13 @@ function Header() {
             <div className={clsx(style["nav-bar"], "d-flex", "justify-content-between", "align-items-center")}>
               
               <Link to = "/" className={clsx(style["nav-bar__item"],style["icon"], "mx-3", "text-decoration-none", "position-relative")}>
-                <FontAwesomeIcon icon={faMagnifyingGlass} size="xl" />
+                <FontAwesomeIcon icon={faMagnifyingGlass} size="lg" />
               </Link>
               <Link to = "/" className={clsx(style["nav-bar__item"],style["icon"], "mx-3", "text-decoration-none", "position-relative")}>
-                <FontAwesomeIcon icon={faBagShopping} size="xl" />
+                <FontAwesomeIcon icon={faBagShopping} size="lg" />
                 <div className={clsx(style["badge"], "position-absolute", "rounded-circle", "d-flex", "justify-content-center", "align-items-center")}>1</div>
+                <div className={clsx(style["shopping-cart"])}>
+                </div>
               </Link>
             </div>
           </Col>

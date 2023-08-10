@@ -18,3 +18,19 @@
         }
     }
 }
+
+.filter {
+    &__item {
+        border-radius: 2px;
+        margin: 0 12px;
+        background-color: var(--primary-color);
+        color: white;
+        font-weight: 600;
+        padding: 4px 16px;
+        font-size: 0.8rem;
+        cursor: pointer;
+        .icon {
+            margin-left: 4px;
+        }
+    }
+}
