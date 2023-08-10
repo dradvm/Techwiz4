@@ -45,7 +45,6 @@ function ShopCatalog() {
         <div className="col-3" style={{ height: "400px" }}><Item></Item></div>
         <div className="col-3" style={{ height: "400px" }}><Item></Item></div>
         <div className="col-3" style={{ height: "400px" }}><Item></Item></div>
-        <div className="col-3" style={{ height: "400px" }}><Item></Item></div>
       </div>
     </Container>
   );

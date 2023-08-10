@@ -5,7 +5,7 @@ import 'swiper/css/pagination';
 
 import { Autoplay } from 'swiper/modules';
 import { Container } from 'react-bootstrap';
-import Item from './Item';
+import Item from '../Item/Item';
 function FeatureItems() {
   return (
       <Container className="py-5">
@@ -20,7 +20,7 @@ function FeatureItems() {
           spaceBetween={30}
           allowTouchMove = {false}
           autoplay = {{
-            "delay": 1000
+            "delay": 5000
           }}
           className="mySwiper mt-5"
         >
