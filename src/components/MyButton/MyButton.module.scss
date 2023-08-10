@@ -1,14 +1,13 @@
 .my-button {
     background-color: var(--primary-color);
     border: 0;
-    border-radius: 12px;
+    border-radius: 4px;
     color: #fff;
     cursor: pointer;
     display: inline-block;
     font-size: 18px;
     font-weight: 600;
     outline: 0;
-    padding: 16px 48px;
     position: relative;
     text-align: center;
     text-decoration: none;
@@ -16,29 +15,18 @@
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-    }
-
-    .my-button:before {
-    background-color: initial;
-    background-image: linear-gradient(#fff 0, rgba(255, 255, 255, 0) 100%);
-    border-radius: 125px;
-    content: "";
-    height: 50%;
-    left: 4%;
-    opacity: .5;
-    position: absolute;
-    top: 0;
-    transition: all .3s;
-    width: 92%;
-    }
-
-    .my-button:hover {
-    box-shadow: rgba(255, 255, 255, .2) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
-    transform: scale(1.05);
-    }
-
-    @media (min-width: 768px) {
-    button {
+    padding: 8px 18px;
+    &.lg {
         padding: 16px 48px;
     }
+    &.sm {
+        padding: 4px 12px;
     }
+    &:hover {
+        box-shadow: rgba(255, 255, 255, .2) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
+        transform: scale(1.05);
+    }
+    &:active {
+        transform: scale(1);
+    }
+}

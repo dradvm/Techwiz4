@@ -7,13 +7,14 @@ import { Autoplay } from 'swiper/modules';
 import { Container } from 'react-bootstrap';
 import Item from '../Item/Item';
 import { productList } from '../../functions/Filter'; //Mảng test, thay bằng list thật sau
+import MyButton from '../MyButton/MyButton';
 function FeatureItems() {
   let featuredProducts = productList.filter((item, index) => (index < 10));
   return (
       <Container className="py-5">
         <div className="d-flex align-items-center justify-content-between">
-          <h2 className="text-secondary-color">Our Feature</h2>
-          <h2>Buy Nơ</h2>
+          <h2 className="text-secondary-color fw-b">Our Feature</h2>
+          <MyButton msg = {<span className="fs-4">Buy Now</span>} />
         </div>
         <Swiper
           modules={[Autoplay]}
