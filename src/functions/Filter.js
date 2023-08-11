@@ -1,64 +1,14 @@
-let productList = //test mảng sản phẩm, thay bằng mảng thật import vào
-[ 
-    {
-        categories: ['Seeds', "Planting Essentials"],
-        name: 'Elephant ears',
-        price: 0
-    },
-    {
-        categories: ["Free Shipping", "Seeds"],
-        name: 'Elephant ears',
-        price: 1
-    },
-    {
-        categories: ["Planting Essentials", "Free Shipping"],
-        name: 'Elephant ears',
-        price: 2
-    },
-    {
-        categories: ["Seeds", "Planting Essentials"],
-        name: 'Elephant ears',
-        price: 3
-    },
-    {
-        categories: ["Free Shipping", "Seeds"],
-        name: 'Elephant ears',
-        price: 4
-    },
-    {
-        categories: ["Planting Essentials", "Free Shipping"],
-        name: 'Elephant ears',
-        price: 5
-    },
-    {
-        categories: ["Seeds", "Planting Essentials"],
-        name: 'Elephant ears',
-        price: 6
-    },
-    {
-        categories: ["Free Shipping", "Seeds"],
-        name: 'Elephant ears',
-        price: 7
-    },
-    {
-        categories: ["Planting Essentials", "Free Shipping"],
-        name: 'Elephant ears',
-        price: 8
-    }
-];
-let categoryList = 
-[
-    "Planting Essentials",
-    "Free Shipping",
-    "Seeds"
-];
+import productList from './../data/plant_data.json';
+import tagIndex from './../data/indexers/tags_indexers.json';
+let tagList = Object.keys(tagIndex).sort((a, b) => (tagIndex[b].length - tagIndex[a].length)).filter((item, index) => index < 13);
+productList = Object.values(productList);
 function productFilter(criterias)
 {
     if (criterias.length === 0)
     {
         return productList;
     }
-    let res = productList.filter((item) =>
+    let res = productList.filter((item, index) =>
     {
         let check = true;
         criterias.forEach((cat) =>
@@ -67,7 +17,7 @@ function productFilter(criterias)
             {
                 return;
             }
-            if (!item.categories.includes(cat))
+            if (!tagIndex[cat].includes(index))
             {
                 check = false;
             }
@@ -80,4 +30,4 @@ function productFilter(criterias)
     return res;
 }
 export default productFilter;
-export {productList, categoryList};
+export {productList, tagList};

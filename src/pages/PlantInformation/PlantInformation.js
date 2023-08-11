@@ -9,83 +9,136 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
 import MyButton from "../../components/MyButton/MyButton";
+import { productList } from "../../functions/Filter";
+import { useContext, useState } from "react";
+import { cartContext } from "../../App";
 function PlantInformation() {
   const location = useLocation();
-  const data = location.state
-  // Lấy ra data từ Item
+  const importedCart = useContext(cartContext);
+  const index = location.state;
+  let product = productList[index];
+  let imgSrcs = product.imgSources.reduce((res, cur) => [...res, require('./../../images/plants/' + cur)], []).filter((item, index) => index < 3);
+  const [curImg, setCurImg] = useState(imgSrcs[0]);
+  let ratingStars = [];
+  for (let i = 0; i < Math.round(product.ratings); i++)
+  {
+    ratingStars.push(<FontAwesomeIcon icon={faStar}></FontAwesomeIcon>);
+  }
+  function changeImg(e)
+  {
+    setCurImg(imgSrcs[e.target.getAttribute('imgindex')]);
+  }
+  const [quantity, setQuantity] = useState(0);
+  function minusQuantity()
+  {
+    if (quantity > 0)
+    {
+      setQuantity((prev) => prev - 1);
+    }
+  }
+  function plusQuantity()
+  {
+    setQuantity((prev) => prev + 1);
+  }
+  function addToCart()
+  {
+    if (quantity === 0)
+    {
+      return;
+    }
+    let exist = false;
+    let indexe = 0;
+    importedCart.cart.forEach((item, index) =>
+    {
+      if (exist)
+      {
+        return;
+      }
+      if (JSON.stringify(item[1]) == JSON.stringify(product))
+      {
+        indexe= index;
+        exist = true;
+      }
+    });
+    if (!exist)
+    {
+      importedCart.setCart((prev) => [...prev, [quantity, product]]);
+    }
+    else
+    {
+      importedCart.setCart((prev) =>
+      {
+        prev[indexe][0] += quantity;
+        return prev;
+      });
+      importedCart.setForceUpdate(prev => prev + 1);
+    }
+  }
+  let details = Object.entries(product.plantDetails);
   return (
-    <Container>
-      <Stack>
-        <span> {data}</span>
+    <Container >
+      <Stack >
         <Row className="gx-2">
           <Col xs={2}>
             <Stack>
-              <div className={clsx("d-flex align-items-center justify-content-center mb-4")}>
-                <img className="w-75 border" src={img} alt="small-img" style={{ height: "200px" }} />
-              </div>
-              <div className={clsx("d-flex align-items-center justify-content-center mb-4")}>
-                <img className="w-75 border" src={img} alt="small-img" style={{ height: "200px" }} />
-              </div>
-              <div className={clsx("d-flex align-items-center justify-content-center mb-4")}>
-                <img className="w-75 border" src={img} alt="small-img" style={{ height: "200px" }} />
-              </div>
+              {imgSrcs.map((src, index) =>
+                <div className={clsx("d-flex align-items-center justify-content-center mb-4")} key={index}>
+                  <img className="w-75 border" src={src} alt="small-img" style={{ height: "200px" }} imgindex={index} onClick={(e) => changeImg(e)}/>
+                </div>
+              )}
             </Stack>
           </Col>
           <Col xs={5}>
-            <div className="d-flex align-items-center justify-content-center">
-              <img className="w-100 border" src={img} alt="small-img" />
+            <div className="d-flex align-items-center justify-content-center" style={{height: "600px"}}>
+              <img className="w-100 h-100 border" src={curImg} alt="small-img" />
             </div>
           </Col>
           <Col xs={5}>
             <Stack className="ms-3 my-3" gap={2}>
-              <h3>Mot Cai Ten That La Dai Thon</h3>
+              <h3>{product.name}</h3>
               <div className="d-flex">
                 <div className="d-flex align-items-center">
                   <div className="d-flex align-items-center">
-                    5.0
+                    {product.ratings}
                     <div className="ms-2">
-                      <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
-                      <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
-                      <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
-                      <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
-                      <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
+                      {ratingStars}
                     </div>
                   </div>
                 </div>
                 <div className="mx-3">|</div>
                 <div className="d-flex align-items-center">
                   <div className="">
-                    19 Ratings
+                    {product.numberOfReviews + ' Ratings'}
                   </div>
                 </div>
                 <div className="mx-3">|</div>
                 <div className="d-flex align-items-center">
                   <div className="me-3">
-                    1820 Sales
+                  {product.sales + ' Sales'}
                   </div>
                 </div>
               </div>
               <div className="py-3 px-4 bg-primary-color text-light mt-4 d-flex justify-content-between">
-                <h3 className="mb-0">$36</h3>
-                <h3 className="mb-0">In Stock</h3>
+                <h3 className="mb-0">{'$' + product.price}</h3>
+                <h3 className="mb-0">{product.status}</h3>
               </div>
               <div className="d-flex align-items-center my-3 mt-4">
                 <InputGroup className="mx-4" style={{width: "120px"}}>
-                  <Button variant="outline-secondary" id="button-addon1">
+                  <Button variant="outline-secondary" id="button-addon1" onClick={minusQuantity}>
                     -
                   </Button>
                   <Form.Control
                     aria-label="Quantity"
                     aria-describedby="quantity"
                     disabled={true}
-                    value={0}
+                    value={quantity}
                     className="text-center"
                   />
-                  <Button variant="outline-secondary" id="button-addon1">
+                  <Button variant="outline-secondary" id="button-addon1" onClick={plusQuantity}>
                     +
                   </Button>
                 </InputGroup>
-                <div>
+                <div onClick={addToCart}>
                   <MyButton size="lg" msg="ADD TO CART"/>
                 </div>
               </div>
@@ -93,16 +146,10 @@ function PlantInformation() {
                 <Accordion.Item eventKey="0">
                   <Accordion.Header className="d-flex align-items-center">
                     <FontAwesomeIcon icon={faPenToSquare} className="me-3" size="xl"></FontAwesomeIcon>
-                    Discriptions
+                    Description
                   </Accordion.Header>
                   <Accordion.Body>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                    minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in
-                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
+                    {product.description}
                   </Accordion.Body>
                 </Accordion.Item>
                 <Accordion.Item eventKey="1">
@@ -111,15 +158,7 @@ function PlantInformation() {
                     Tags
                   </Accordion.Header>
                   <Accordion.Body className="d-flex align-items-center flex-wrap">
-                    <div className={clsx(style["tag-item"])}>tag 1</div>
-                    <div className={clsx(style["tag-item"])}>tag 1</div>
-                    <div className={clsx(style["tag-item"])}>tag 1</div>
-                    <div className={clsx(style["tag-item"])}>tag 1</div>
-                    <div className={clsx(style["tag-item"])}>tag 1</div>
-                    <div className={clsx(style["tag-item"])}>tag 1</div>
-                    <div className={clsx(style["tag-item"])}>tag 1</div>
-                    <div className={clsx(style["tag-item"])}>tag 1</div>
-                    <div className={clsx(style["tag-item"])}>tag 1</div>
+                    {product.tags.map((item, index) => <div className={clsx(style["tag-item"])} key={index}>{item}</div>)}
                   </Accordion.Body>
                 </Accordion.Item>
                 <Accordion.Item eventKey="2">
@@ -128,15 +167,7 @@ function PlantInformation() {
                     Categories
                   </Accordion.Header>
                   <Accordion.Body className="d-flex align-items-center flex-wrap">
-                    <div className={clsx(style["tag-item"])}>tag 1</div>
-                    <div className={clsx(style["tag-item"])}>tag 1</div>
-                    <div className={clsx(style["tag-item"])}>tag 1</div>
-                    <div className={clsx(style["tag-item"])}>tag 1</div>
-                    <div className={clsx(style["tag-item"])}>tag 1</div>
-                    <div className={clsx(style["tag-item"])}>tag 1</div>
-                    <div className={clsx(style["tag-item"])}>tag 1</div>
-                    <div className={clsx(style["tag-item"])}>tag 1</div>
-                    <div className={clsx(style["tag-item"])}>tag 1</div>
+                    {product.categories.map((item, index) => <div className={clsx(style["tag-item"])} key={index}>{item}</div>)}
                   </Accordion.Body>
                 </Accordion.Item><Accordion.Item eventKey="3">
                   <Accordion.Header className="d-flex align-items-center">
@@ -145,30 +176,12 @@ function PlantInformation() {
                   </Accordion.Header>
                   <Accordion.Body className="">
                     <Stack className="ms-4">
-                      <div className="d-flex mb-2 align-items-center">
-                        <h6 className="me-3 mb-0">ABCDE: </h6>
-                        <div>HADADASD</div>
-                      </div>
-                      <div className="d-flex mb-2 align-items-center">
-                        <h6 className="me-3 mb-0">ABCDE: </h6>
-                        <div>HADADASD</div>
-                      </div>
-                      <div className="d-flex mb-2 align-items-center">
-                        <h6 className="me-3 mb-0">ABCDE: </h6>
-                        <div>HADADASD</div>
-                      </div>
-                      <div className="d-flex mb-2 align-items-center">
-                        <h6 className="me-3 mb-0">ABCDE: </h6>
-                        <div>HADADASD</div>
-                      </div>
-                      <div className="d-flex mb-2 align-items-center">
-                        <h6 className="me-3 mb-0">ABCDE: </h6>
-                        <div>HADADASD</div>
-                      </div>
-                      <div className="d-flex mb-2 align-items-center">
-                        <h6 className="me-3 mb-0">ABCDE: </h6>
-                        <div>HADADASD</div>
-                      </div>
+                      {details.map((item, index) =>
+                        <div className="d-flex mb-2 align-items-center" key={index}>
+                          <h6 className="me-3 mb-0">{item[0] + ':'}</h6>
+                          <div>{item[1]}</div>
+                        </div>
+                      )}
                     </Stack>
                   </Accordion.Body>
                 </Accordion.Item>

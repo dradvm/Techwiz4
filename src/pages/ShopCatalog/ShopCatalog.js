@@ -7,7 +7,7 @@ import Item from "../../components/Item/Item";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDeleteLeft } from "@fortawesome/free-solid-svg-icons";
 import productFilter from './../../functions/Filter.js';
-import { categoryList } from "./../../functions/Filter.js";
+import { tagList } from "./../../functions/Filter.js";
 import { useState } from "react";
 
 import slider1 from "@images/slider-1.jpg"
@@ -29,7 +29,7 @@ function ShopCatalog() {
   let block = false;
   function addToFilter(e)
   {
-    let cat = categoryList[e.target.getAttribute('catindex')];
+    let cat = tagList[e.target.getAttribute('catindex')];
     if (filterArr.includes(cat))
     {
       return;
@@ -50,13 +50,9 @@ function ShopCatalog() {
   var productArr;
   if (sort === 0)
   {
-    productArr = productFilter(filterArr);
-  }
-  else if (sort === 1)
-  {
     productArr = productFilter(filterArr).sort((a, b) => a.price - b.price);
   }
-  else if (sort === -1)
+  else if (sort === 1)
   {
     productArr = productFilter(filterArr).sort((a, b) => b.price - a.price);
   }
@@ -118,8 +114,8 @@ function ShopCatalog() {
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
-                <Dropdown.Item onClick={() => {setSort(1)}}>Ascending</Dropdown.Item>
-                <Dropdown.Item onClick={() => {setSort(-1)}}>Descending</Dropdown.Item>
+                <Dropdown.Item onClick={() => {setSort(0)}}>Ascending</Dropdown.Item>
+                <Dropdown.Item onClick={() => {setSort(1)}}>Descending</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
             <div className="ms-3 d-flex align-items-center">
@@ -129,7 +125,7 @@ function ShopCatalog() {
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                  {categoryList.map((item, index) => 
+                  {tagList.map((item, index) => 
                     <Dropdown.Item key={index} catindex={index} onClick={(e) => addToFilter(e)}>{item}</Dropdown.Item>
                   )}
                 </Dropdown.Menu>
