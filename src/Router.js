@@ -7,6 +7,7 @@ import ShopCatalog from './pages/ShopCatalog/ShopCatalog.js';
 import Feedback from './pages/Feedback/Feedback.js';
 import PlantInformation from './pages/PlantInformation/PlantInformation.js';
 import ShoppingCartPage from './pages/ShoppingCartPage/ShoppingCartPage.js';
+import SearchPage from './pages/SearchPage/SearchPage.js';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
         {
           path: "/shopping-cart",
           element: <ShoppingCartPage/>
+        },
+        {
+          path: "/search",
+          element: <SearchPage/>
         }
     ]
   }

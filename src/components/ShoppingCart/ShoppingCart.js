@@ -4,6 +4,7 @@ import ShoppingCartItem from "../ShoppingCartItem/ShoppingCartItem";
 import MyButton from "../MyButton/MyButton";
 import { useContext } from "react";
 import { cartContext } from "../../App";
+import { Link } from "react-router-dom";
 function ShoppingCart() {
     const importedCart = useContext(cartContext);
     return (
@@ -14,7 +15,7 @@ function ShoppingCart() {
             </div>
             <div className="border-top d-flex w-100 justify-content-end">
                 <div className="my-3 mx-auto">
-                    <MyButton msg="View My Shopping Cart" />
+                    <Link to = "/shopping-cart"><MyButton msg="View My Shopping Cart" /></Link>
                 </div>
             </div>
         </div>

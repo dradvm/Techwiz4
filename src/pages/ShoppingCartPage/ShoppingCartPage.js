@@ -6,6 +6,8 @@ import ShoppingCartPageItem from "../ShoppingCartPageItem/ShoppingCartPageItem";
 import { createContext, useContext, useEffect, useState } from "react";
 import { cartContext } from "../../App";
 const checkContext = createContext();
+import { Link } from "react-router-dom";
+
 function ShoppingCartPage() {
   let importedCart = useContext(cartContext);
   const [check, setCheck] = useState(importedCart.cart.map(() => false));
@@ -78,7 +80,9 @@ function ShoppingCartPage() {
             <Col xs={6} className="d-flex align-items-center justify-content-end">
               <div className="fs-5 fw-semibold">Total:</div>
               <div className="fs-4 ms-3 me-5 fw-bold">{'$' + sum}</div>
-              <button className={clsx(style["checkout"], "me-5")}>Check Out</button>
+              <Link to = "/checkout" >
+                <button className={clsx(style["checkout"], "me-5")}>Check Out</button>
+              </Link>
             </Col>
           </Row>
         </div>
