@@ -7,7 +7,10 @@ import { Link } from "react-router-dom";
 import HeaderBg from "../HeaderBg/HeaderBg";
 import logo from "@images/logo.png"
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
+import { useContext } from "react";
+import { cartContext } from "../../App";
 function Header() {
+  const importedCart = useContext(cartContext);
   return (
     <>
       <HeaderBg/>
@@ -37,7 +40,7 @@ function Header() {
               </div>
               <div className={clsx(style["nav-bar__item"],style["icon"], style["shopping-cart-icon"], "ms-3", "position-relative", "z-3")}>
                 <Link  to = "/shopping-cart" className="text-decoration-none text-black"><FontAwesomeIcon icon={faBagShopping} size="lg" className="p-2"/></Link>
-                <div className={clsx(style["badge"], "position-absolute", "rounded-circle", "d-flex", "justify-content-center", "align-items-center")}>1</div>
+                <div className={clsx(style["badge"], "position-absolute", "rounded-circle", "d-flex", "justify-content-center", "align-items-center")}>{importedCart.cart.length}</div>
                 <div  className={clsx(style["shopping-cart"])}>
                   <ShoppingCart></ShoppingCart>
                 </div>

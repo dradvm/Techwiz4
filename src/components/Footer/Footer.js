@@ -6,9 +6,10 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-regular-svg-icons";
-import { useState } from "react";
+import { useRef, useState } from "react";
 function Footer() {
   const [subEmail, setSubEmail] = useState('');
+  let ref = useRef(null);
   function emailHandleOnEnter(e)
   {
     if (e.key === 'Enter')
@@ -54,6 +55,7 @@ function Footer() {
     else
     {
       alert('Please retype email.');
+      ref.current.focus();
     }
   }
   return (
@@ -75,6 +77,7 @@ function Footer() {
               placeholder="Enter your email..."
               aria-label="Enter your email..."
               aria-describedby="basic-addon1"
+              ref={ref}
               value={subEmail}
               onChange={(e) => setSubEmail(e.target.value)}
               onKeyDown={(e) => emailHandleOnEnter(e)}

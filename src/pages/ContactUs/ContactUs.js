@@ -5,7 +5,69 @@ import Form from 'react-bootstrap/Form';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLocationDot, faPhoneVolume } from "@fortawesome/free-solid-svg-icons";
 import spImg from "@images/contact-us-support-img.png"
+import { useRef, useState } from "react";
 function ContactUs() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [msg, setMsg] = useState('');
+  let nameRef = useRef(null);
+  let emailRef = useRef(null);
+  let msgRef = useRef(null);
+  function nameEnter(e) 
+  {
+    if (e.key === 'Enter')
+    {
+      emailRef.current.focus();
+    }
+  }
+  function emailEnter(e) 
+  {
+    if (e.key === 'Enter')
+    {
+      msgRef.current.focus();
+    }
+  }
+  function msgEnter(e) 
+  {
+    if (e.key === 'Enter')
+    {
+      submit();
+    }
+  }
+  function submit()
+  {
+    if (name.trim().length === 0)
+    {
+      alert('Pleas type your name');
+      nameRef.current.focus();
+      return;
+    }
+    let regEx = /^[a-zA-Z]+[0-9a-zA-Z]*@[a-zA-Z0-9]+.[a-zA-Z]+$/;
+    if (!regEx.test(email))
+    {
+      alert('Pleas type your email');
+      emailRef.current.focus();
+      return;
+    }
+    if (msg.trim().length === 0)
+    {
+      alert('Pleas type your message');
+      msgRef.current.focus();
+      return;
+    }
+    let res =
+    {
+      name: name,
+      email: email,
+      msg: msg
+    };
+    let current = (JSON.parse(localStorage.getItem('msg')) || []);
+    current.push(res);
+    localStorage.setItem('msg', JSON.stringify(current));
+    setName('');
+    setEmail('');
+    setMsg('');
+  }
   return (
     <Container className={clsx("my-5", "py-5", "w-75", style["contact-us"])}>
       <Row>
@@ -14,15 +76,15 @@ function ContactUs() {
           <div className={clsx(style["bar"], "mt-1")}></div>
           <Form className="mt-4">
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Control type="text" placeholder="Full Name" />
+              <Form.Control type="text" placeholder="Full Name" ref={nameRef} value={name} onChange={(e) => setName(e.target.value)} onKeyDown={(e) => nameEnter(e)}/>
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
-              <Form.Control type="email" placeholder="Name@example.com" />
+              <Form.Control type="email" placeholder="Name@example.com" ref={emailRef} value={email} onChange={(e) => setEmail(e.target.value)} onKeyDown={(e) => emailEnter(e)}/>
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-              <Form.Control as="textarea" rows={5} placeholder="Message" />
+              <Form.Control as="textarea" rows={5} placeholder="Message" ref={msgRef} value={msg} onChange={(e) => setMsg(e.target.value)} onKeyDown={(e) => msgEnter(e)}/>
             </Form.Group>
-            <Button variant="success" className="w-100">Submit</Button>
+            <Button variant="success" className="w-100" onClick={submit}>Submit</Button>
           </Form>
         </Col>
         <Col className="d-flex justify-content-center align-items-center">
