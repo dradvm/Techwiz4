@@ -3,6 +3,7 @@ import style from "./ShoppingCartPage.module.scss";
 import { Col, Container, Row, Stack } from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
 import ShoppingCartPageItem from "../ShoppingCartPageItem/ShoppingCartPageItem";
+import { Link } from "react-router-dom";
 
 function ShoppingCartPage() {
   return (
@@ -57,7 +58,9 @@ function ShoppingCartPage() {
             <Col xs={6} className="d-flex align-items-center justify-content-end">
               <div className="fs-5 fw-semibold">Total (2 items):</div>
               <div className="fs-4 ms-3 me-5 fw-bold">$500</div>
-              <button className={clsx(style["checkout"], "me-5")}>Check Out</button>
+              <Link to = "/checkout" >
+                <button className={clsx(style["checkout"], "me-5")}>Check Out</button>
+              </Link>
             </Col>
           </Row>
         </div>
