@@ -18,7 +18,7 @@ function ShoppingCartItem(props) {
       <div className="ms-3 d-flex align-items-center justify-content-between w-100">
         <Link to = "/" className="d-flex flex-column align-items-start text-decoration-none text-black">
           <div>{"x" + props.product[0] + " " + props.product[1].name}</div>
-          <div>{"$" + props.product[1].price * props.product[0]}</div>
+          <div>{"$" + (props.product[1].price * props.product[0]).toFixed(2)}</div>
         </Link>
         <FontAwesomeIcon icon = {faTrash} style={{cursor: "pointer"}} className="p-2" onClick={removeFromCart}/>
       </div>

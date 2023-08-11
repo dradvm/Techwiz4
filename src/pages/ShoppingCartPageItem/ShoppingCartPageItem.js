@@ -3,19 +3,96 @@ import { Col, Container, Row, Stack, Button, } from "react-bootstrap";
 
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
-import img from "@images/test.jpg"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-function ShoppingCartPageItem() {
+import { useContext, useState } from "react";
+import { cartContext } from "../../App";
+import { checkContext } from "../ShoppingCartPage/ShoppingCartPage";
+function ShoppingCartPageItem(props) {
+  let importedCart = useContext(cartContext);
+  let importedCheck = useContext(checkContext);
+  let product = props.product;
+  let index = importedCart.cart.indexOf(product);
+  let img = require('./../../images/plants/' + product[1].imgSources[0]);
+  function checkHandle()
+  {
+    importedCheck.setCheck((prev) => 
+    {
+      prev[index] = !prev[index];
+      let all = true;
+      prev.forEach((item) =>
+      {
+        if (!all)
+        {
+          return;
+        }
+        if (!item)
+        {
+          all = false;
+        }
+        if (all)
+        {
+          importedCheck.setCheckAll(true);
+        }
+        else
+        {
+          importedCheck.setCheckAll(false);
+        }
+      });
+      return prev;
+    });
+    importedCart.setForceUpdate((prev) => prev + 1);
+  }
+  function minusQuantity()
+  {
+    if (product[0] > 1)
+    {
+      importedCart.setCart((prev) =>
+      {
+        prev[index][0]--;
+        return prev;
+      })
+      importedCart.setForceUpdate((prev) => prev + 1);
+      return;
+    }
+    if (product[0] === 1)
+    {
+      importedCart.setCart((prev) =>
+      {
+        prev = prev.filter((item) => JSON.stringify(item) != JSON.stringify(product));
+        return prev;
+      })
+    }
+  }
+  function plusQuantity()
+  {
+    importedCart.setCart((prev) =>
+    {
+      prev[index][0]++;
+      return prev;
+    })
+    importedCart.setForceUpdate((prev) => prev + 1);
+    return;
+  }
+  function removeFromCart()
+  {
+    importedCart.setCart((prev) =>
+    {
+      prev = prev.filter((item) => JSON.stringify(item) != JSON.stringify(product));
+      return prev;
+    })
+  }
   return (
     <div className="border-bottom">
       <Row className="d-flex align-items-center py-2">
         <Col xs={1} className="text-center">
           <Form.Check
             inline
-            name="shopping-cart-checkbox-1"
+            name={product[1].name}
             type="checkbox"
-            id="shopping-cart-checkbox-1"
+            id={importedCart.cart.indexOf(product)}
+            checked={importedCheck.check[index]}
+            onClick={checkHandle}
           />
         </Col>
         <Col xs={6}>
@@ -24,16 +101,16 @@ function ShoppingCartPageItem() {
               <img src={img} alt="smail-img" className="w-100" />
             </div>
             <div className="fw-semibold fs-5">
-              Mot Cai ten cung goi la dai
+              {product[1].name}
             </div>
           </div>
         </Col>
         <Col xs={1} className="text-center">
-          $45
+          {'$' + product[1].price}
         </Col>
         <Col xs={2} className="text-center">
           <InputGroup className="mx-5" style={{ width: "120px" }}>
-            <Button variant="success" id="button-addon1">
+            <Button variant="success" id="button-addon1" onClick={minusQuantity}>
               -
             </Button>
             <Form.Control
@@ -41,14 +118,15 @@ function ShoppingCartPageItem() {
               aria-describedby="quantity"
               disabled={true}
               className="text-center"
+              value={product[0]}
             />
-            <Button variant="success" id="button-addon1">
+            <Button variant="success" id="button-addon1" onClick={plusQuantity}>
               +
             </Button>
           </InputGroup>
         </Col>
-        <Col xs={1} className="text-center">$200</Col>
-        <Col xs={1} className="text-center"><FontAwesomeIcon icon={faTrash} /></Col>
+        <Col xs={1} className="text-center">{'$' + (product[0] * product[1].price).toFixed(2)}</Col>
+        <Col xs={1} className="text-center" onClick={removeFromCart}><FontAwesomeIcon icon={faTrash}/></Col>
       </Row>
     </div>
   );

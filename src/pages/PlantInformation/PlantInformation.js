@@ -73,6 +73,7 @@ function PlantInformation() {
       });
       importedCart.setForceUpdate(prev => prev + 1);
     }
+    setQuantity(0);
   }
   let details = Object.entries(product.plantDetails);
   return (
