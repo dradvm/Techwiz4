@@ -5,7 +5,7 @@ import { productList } from '../../functions/Filter';
 import cannotFindImg from "@images/cannot-find.webp"
 import Item from "../../components/Item/Item";
 function SearchPage(props) {
-  filterValue = props.searchValue.trim().toLowerCase();
+  let filterValue = props.searchValue.trim().toLowerCase();
   let res = productList.filter((item) =>
   {
     if (item.name.toLowerCase().includes(filterValue))

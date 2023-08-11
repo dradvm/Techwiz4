@@ -4,9 +4,9 @@ import { Col, Container, Row, Stack } from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
 import ShoppingCartPageItem from "../ShoppingCartPageItem/ShoppingCartPageItem";
 import { createContext, useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { cartContext } from "../../App";
 const checkContext = createContext();
-import { Link } from "react-router-dom";
 
 function ShoppingCartPage() {
   let importedCart = useContext(cartContext);

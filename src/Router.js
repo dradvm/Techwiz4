@@ -8,6 +8,7 @@ import Feedback from './pages/Feedback/Feedback.js';
 import PlantInformation from './pages/PlantInformation/PlantInformation.js';
 import ShoppingCartPage from './pages/ShoppingCartPage/ShoppingCartPage.js';
 import SearchPage from './pages/SearchPage/SearchPage.js';
+import Checkout from './pages/Checkout/Checkout.js';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
         {
           path: "/search",
           element: <SearchPage/>
+        },
+        {
+          path: "/checkout",
+          element: <Checkout/>
         }
     ]
   }
