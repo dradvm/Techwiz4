@@ -5,7 +5,7 @@ import clsx from "clsx";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import HeaderBg from "../HeaderBg/HeaderBg";
-import logo from "@images/logo.png"
+import logo from "@images/logo.webp"
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
 import { useContext } from "react";
 import { cartContext } from "../../App";

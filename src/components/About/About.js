@@ -1,10 +1,10 @@
 
 import clsx from "clsx";
 import { Container , Col, Row} from "react-bootstrap";
-import img1 from "@images/img-about-1.png"
-import img2 from "@images/img-about-2.png"
-import img3 from "@images/img-about-3.png"
-import leaf from "@images/img-about-leaf.png"
+import img1 from "@images/img-about-1.webp"
+import img2 from "@images/img-about-2.webp"
+import img3 from "@images/img-about-3.webp"
+import leaf from "@images/img-about-leaf.webp"
 function About() {
   return (
     <Container className="bg-body-tertiary py-5 position-relative overflow-hidden" fluid>

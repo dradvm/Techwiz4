@@ -1,7 +1,7 @@
 
 import clsx from "clsx";
 import style from "./TopPreviewSection.module.scss";
-import bigImage from "@images/big-shopping-img.png"
+import bigImage from "@images/big-shopping-img.webp"
 import { Container, Row , Col} from "react-bootstrap";
 import MyButton from "../MyButton/MyButton";
 import { Link } from "react-router-dom";

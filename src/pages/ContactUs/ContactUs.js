@@ -4,7 +4,7 @@ import { Col, Container, Row, Button, Stack } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLocationDot, faPhoneVolume } from "@fortawesome/free-solid-svg-icons";
-import spImg from "@images/contact-us-support-img.png"
+import spImg from "@images/contact-us-support-img.webp"
 import { useRef, useState } from "react";
 function ContactUs() {
   const [name, setName] = useState('');

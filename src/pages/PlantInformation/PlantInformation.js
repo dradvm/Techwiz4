@@ -2,7 +2,6 @@ import clsx from "clsx";
 import style from "./PlantInformation.module.scss";
 import { Accordion, Col, Container, Row, Stack } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
-import img from "@images/test.jpg"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleInfo, faPenToSquare, faSeedling, faStar, faTags } from "@fortawesome/free-solid-svg-icons";
 import Form from 'react-bootstrap/Form';
