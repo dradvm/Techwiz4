@@ -27,9 +27,15 @@ function Header() {
             <div className={clsx(style["nav-bar"], "d-flex", "justify-content-between", "align-items-center")}>
               
               <Link to = "/" className={clsx(style["nav-bar__item"],style["icon"], "mx-3", "text-decoration-none", "position-relative")}>
-                <FontAwesomeIcon icon={faMagnifyingGlass} size="lg" />
+                <div className={clsx(style["input-search-box"], style["open"])}>
+                  
+                  <input placeholder="Search..." aria-label="Search" aria-describedby="search"/>
+                  <div className={clsx(style["search"])}>
+                    <FontAwesomeIcon icon={faMagnifyingGlass} size="lg" className={clsx(style["icon"])}/>
+                  </div>
+                </div>
               </Link>
-              <Link to = "/" className={clsx(style["nav-bar__item"],style["icon"], style["shopping-cart-icon"], "mx-3", "text-decoration-none", "position-relative", "z-3")}>
+              <Link to = "/" className={clsx(style["nav-bar__item"],style["icon"], style["shopping-cart-icon"], "ms-3", "text-decoration-none", "position-relative", "z-3")}>
                 <FontAwesomeIcon icon={faBagShopping} size="lg" className="p-2"/>
                 <div className={clsx(style["badge"], "position-absolute", "rounded-circle", "d-flex", "justify-content-center", "align-items-center")}>1</div>
                 <div  className={clsx(style["shopping-cart"])}>

@@ -60,11 +60,11 @@ function Footer() {
     <Container fluid className={clsx(style["thank-you"], "d-flex", "flex-column", "text-white", "align-items-center", "py-5")}>
       <div className={clsx(style["nav-bar"], "d-flex")}>
         <div>HOME</div>
-        <div>|</div>
+        <span className="mx-3">|</span>
         <div>ABOUT</div>
-        <div>|</div>
+        <span className="mx-3">|</span>
         <div>CONTACT US</div>
-        <div>|</div>
+        <span className="mx-3">|</span>
         <div>FEEDBACK</div>
       </div>
       <div className={clsx("mt-5", style["subscribe"], "d-flex", "flex-column", "align-items-center")}>
