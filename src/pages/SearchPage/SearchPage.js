@@ -4,8 +4,10 @@ import { Col, Container, Row } from "react-bootstrap";
 import { productList } from '../../functions/Filter';
 import cannotFindImg from "@images/cannot-find.webp"
 import Item from "../../components/Item/Item";
-function SearchPage(props) {
-  let filterValue = props.searchValue.trim().toLowerCase();
+import { useLocation } from "react-router-dom";
+function SearchPage() {
+  const location = useLocation();
+  let filterValue = location.state.trim().toLowerCase();
   let res = productList.filter((item) =>
   {
     if (item.name.toLowerCase().includes(filterValue))

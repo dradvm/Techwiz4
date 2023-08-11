@@ -14,10 +14,11 @@ function ShoppingCartPage() {
   const [checkAll, setCheckAll] = useState(false);
   function checkAllProduct()
   {
+    let state = !checkAll;
     setCheckAll((prev) => !prev);
     setCheck((prev) =>
     {
-      prev = prev.map((item) => !item);
+      prev = prev.map((item) => state);
       return prev;
     })
   }
@@ -80,7 +81,7 @@ function ShoppingCartPage() {
             <Col xs={6} className="d-flex align-items-center justify-content-end">
               <div className="fs-5 fw-semibold">Total:</div>
               <div className="fs-4 ms-3 me-5 fw-bold">{'$' + sum}</div>
-              <Link to = "/checkout" >
+              <Link to = "/checkout" state={sum}>
                 <button className={clsx(style["checkout"], "me-5")}>Check Out</button>
               </Link>
             </Col>
