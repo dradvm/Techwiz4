@@ -73,7 +73,7 @@ function ShopCatalog() {
           }}
           allowTouchMove={false}
           className="mySwiper"
-          style={{ height: "600px" }}
+          style={{ height: "80vh" }}
         >
           <SwiperSlide className="" >
             <div className="position-relative w-100 h-100">
@@ -146,7 +146,7 @@ function ShopCatalog() {
           </div>
           <div className={clsx(style["custom-drop-down"])}><button disabled>{productArr.length + " Product(s)"}</button></div>
         </div>
-        <div className="row mt-4 gy-4">
+        <div className="row mt-4 gy-4 gx-4">
           {productArr.map((item, index) =>
             <div className="col-3" style={{ height: "400px" }} key={index}><Item product={item}></Item></div>
           )}
