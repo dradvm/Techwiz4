@@ -123,8 +123,8 @@ function PlantInformation() {
                 <h3 className="mb-0">{product.status}</h3>
               </div>
               <div className="d-flex align-items-center my-3 mt-4">
-                <InputGroup className="mx-4" style={{width: "120px"}}>
-                  <Button variant="outline-secondary" id="button-addon1" onClick={minusQuantity}>
+                <InputGroup className="mx-5" style={{width: "120px"}}>
+                  <Button variant="success" id="button-addon1" onClick={minusQuantity}>
                     -
                   </Button>
                   <Form.Control
@@ -134,7 +134,7 @@ function PlantInformation() {
                     value={quantity}
                     className="text-center"
                   />
-                  <Button variant="outline-secondary" id="button-addon1" onClick={plusQuantity}>
+                  <Button variant="success" id="button-addon1" onClick={plusQuantity}>
                     +
                   </Button>
                 </InputGroup>

@@ -73,7 +73,7 @@ function ShopCatalog() {
         >
           <SwiperSlide className="" >
             <div className="position-relative w-100 h-100">
-              <img src={slider1}  alt="slider-img" className="w-100" />
+              <img src={slider1}  alt="slider-img" className="w-100" loading="lazy"/>
               <div className={clsx(style["over-lay"])}>
               </div>
               <h1 className="position-absolute top-50 start-50 translate-middle text-white text-center text-uppercase z-3 w-75" style={{fontSize:"5rem"}}>Explore Our Collection</h1>
@@ -81,7 +81,7 @@ function ShopCatalog() {
             </SwiperSlide>
           <SwiperSlide className="" >
             <div className="position-relative w-100 h-100">
-              <img src={slider2}  alt="slider-img" className="w-100" />
+              <img src={slider2}  alt="slider-img" className="w-100" loading="lazy"/>
               <div className={clsx(style["over-lay"])}>
               </div>
               <h1 className="position-absolute top-50 start-50 translate-middle text-white text-center text-uppercase z-3 w-75" style={{fontSize:"5rem"}}>Indoor Greenery Delights</h1>
@@ -89,7 +89,7 @@ function ShopCatalog() {
             </SwiperSlide>
           <SwiperSlide className="" >
             <div className="position-relative w-100 h-100">
-              <img src={slider3}  alt="slider-img" className="w-100" />
+              <img src={slider3}  alt="slider-img" className="w-100" loading="lazy"/>
               <div className={clsx(style["over-lay"])}>
               </div>
               <h1 className="position-absolute top-50 start-50 translate-middle text-white text-center text-uppercase z-3 w-75" style={{fontSize:"5rem"}}>Outdoor Beauties</h1>
@@ -97,7 +97,7 @@ function ShopCatalog() {
             </SwiperSlide>
           <SwiperSlide className="" >
             <div className="position-relative w-100 h-100">
-              <img src={slider4}  alt="slider-img" className="w-100" />
+              <img src={slider4}  alt="slider-img" className="w-100" loading="lazy"/>
               <div className={clsx(style["over-lay"])}>
               </div>
               <h1 className="position-absolute top-50 start-50 translate-middle text-white text-center text-uppercase z-3 w-75" style={{fontSize:"5rem"}}>Garden Care Essentials</h1>
