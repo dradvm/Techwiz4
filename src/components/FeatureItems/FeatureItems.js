@@ -11,10 +11,11 @@ import MyButton from '../MyButton/MyButton';
 function FeatureItems() {
   let featuredProducts = productList.filter((item, index) => (index < 10));
   return (
-      <Container className="py-5">
+      <Container className="py-5 bg-white" fluid>
+        <Container>
         <div className="d-flex align-items-center justify-content-between">
           <h2 className="text-secondary-color fw-b">Our Feature</h2>
-          <MyButton msg = {<span className="fs-4">Buy Now</span>} />
+          <MyButton msg = "Buy Now" />
         </div>
         <Swiper
           modules={[Autoplay]}
@@ -33,6 +34,7 @@ function FeatureItems() {
             </SwiperSlide>
           )}
         </Swiper>
+        </Container>
     </Container>
   );
 }

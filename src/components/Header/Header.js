@@ -13,8 +13,8 @@ function Header() {
   const importedCart = useContext(cartContext);
   return (
     <>
-      <HeaderBg/>
-      <Container className="mt-1" fluid>
+      {/* <HeaderBg/> */}
+      <Container className="pt-1 shadow-sm bg-white" fluid >
         <Row className={clsx("align-items-center", "border-bottom", "bottom-black", "px-5")}>
           <Col ><div style={{width: "200px", cursor: "pointer"}} className="overflow-hidden"><img src={logo} alt= "logo-website" className="w-100 h-100"/></div></Col>
           <Col className={clsx("align-items-center")} >
@@ -40,7 +40,7 @@ function Header() {
               </div>
               <div className={clsx(style["nav-bar__item"],style["icon"], style["shopping-cart-icon"], "ms-3", "position-relative", "z-3")}>
                 <Link  to = "/shopping-cart" className="text-decoration-none text-black"><FontAwesomeIcon icon={faBagShopping} size="lg" className="p-2"/></Link>
-                <div className={clsx(style["badge"], "position-absolute", "rounded-circle", "d-flex", "justify-content-center", "align-items-center")}>{importedCart.cart.length}</div>
+                <Link to = "/shopping-cart" className={clsx(style["badge"], "position-absolute", "rounded-circle", "d-flex", "justify-content-center", "align-items-center", "text-decoration-none")}>{importedCart.cart.length}</Link>
                 <div  className={clsx(style["shopping-cart"])}>
                   <ShoppingCart></ShoppingCart>
                 </div>

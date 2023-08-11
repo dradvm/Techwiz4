@@ -69,10 +69,10 @@ function ContactUs() {
     setMsg('');
   }
   return (
-    <Container className={clsx("my-5", "py-5", "w-75", style["contact-us"])}>
-      <Row>
+    <Container className={clsx("mb-5 mt-2", "py-5", "w-75", style["contact-us"])}>
+      <Row className="bg-white p-3 rounded">
         <Col className={clsx("d-flex", "flex-column", "justify-content-between")}>
-          <h3>Contact us</h3>
+          <h2>Contact us</h2>
           <div className={clsx(style["bar"], "mt-1")}></div>
           <Form className="mt-4">
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">

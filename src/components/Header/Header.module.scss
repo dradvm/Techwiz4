@@ -3,7 +3,7 @@
     top: -10%;
     left: 50%;
     color: white; 
-    background-color: black;
+    background-color: var(--primary-color);
     width: 20px;
     height: 20px;
     line-height: 1;
@@ -38,7 +38,7 @@
                 transition: .2s;
                 width: 0;
                 height: 2px;
-                background-color: black;
+                background-color: green;
             }
             &:hover {
                 &::after {
@@ -63,13 +63,14 @@
 .input-search-box {
     position: relative;
     width: 100%;
-    max-width: 40px;
-    height: 40px;
+    max-width: 42px;
+    height: 42px;
     margin: 0 0px;
     background-color: #fff;
     border-radius: 6px;
     transition: all 0.5s ease-in-out;
-    // padding: 10px 40px;
+    border: 1px solid #ccc;
+    // padding: 10px 42px;
     input {
         position: relative;
         width: 100%;
@@ -85,16 +86,17 @@
     }
     .icon {
         position: absolute;
-        width: 40px;
+        width: 42px;
         display: flex;
         align-items: center;
         justify-content: center;
+        cursor: pointer;
     }
     .search {
         position: absolute;
         top: 0;
         left: 0;
-        width: 40px;
+        width: 42px;
         height: 100%;
         display: flex;
         justify-content: center;
@@ -103,24 +105,12 @@
         border-radius: 6px;
         cursor: pointer;
     }
-    &:hover {
-        max-width: 350px;
-        input {
-            padding: 0 12px 0 40px;
-        }
-        .icon {
-            // left: unset;
-        }
-        .search {
-            border-radius: 6px 0 0 6px;
-        }
-    }
 }
 
 .open {
     max-width: 350px;
     input {
-        padding: 0 12px 0 40px;
+        padding: 0 12px 0 42px;
     }
     .icon {
         // left: unset;
