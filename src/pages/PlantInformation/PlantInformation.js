@@ -8,6 +8,7 @@ import { faPenToSquare, faSeedling, faStar, faTags } from "@fortawesome/free-sol
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
+import MyButton from "../../components/MyButton/MyButton";
 function PlantInformation() {
   const location = useLocation();
   const data = location.state
@@ -20,13 +21,13 @@ function PlantInformation() {
           <Col xs={2}>
             <Stack>
               <div className={clsx("d-flex align-items-center justify-content-center mb-4")}>
-                <img className="w-75 border" src={img} alt="small-img" style={{ height: "25vh" }} />
+                <img className="w-75 border" src={img} alt="small-img" style={{ height: "200px" }} />
               </div>
               <div className={clsx("d-flex align-items-center justify-content-center mb-4")}>
-                <img className="w-75 border" src={img} alt="small-img" style={{ height: "25vh" }} />
+                <img className="w-75 border" src={img} alt="small-img" style={{ height: "200px" }} />
               </div>
               <div className={clsx("d-flex align-items-center justify-content-center mb-4")}>
-                <img className="w-75 border" src={img} alt="small-img" style={{ height: "25vh" }} />
+                <img className="w-75 border" src={img} alt="small-img" style={{ height: "200px" }} />
               </div>
             </Stack>
           </Col>
@@ -36,7 +37,7 @@ function PlantInformation() {
             </div>
           </Col>
           <Col xs={5}>
-            <Stack className="ms-3 my-3">
+            <Stack className="ms-3 my-3" gap={2}>
               <h3>Mot Cai Ten That La Dai Thon</h3>
               <div className="d-flex">
                 <div className="d-flex align-items-center">
@@ -64,9 +65,11 @@ function PlantInformation() {
                   </div>
                 </div>
               </div>
-              <div className="py-3 px-4 bg-primary-color text-light mt-4"><h3 className="mb-0">$36</h3></div>
-              <div className="d-flex align-items-center my-4">
-                <div>Quantity</div>
+              <div className="py-3 px-4 bg-primary-color text-light mt-4 d-flex justify-content-between">
+                <h3 className="mb-0">$36</h3>
+                <h3 className="mb-0">In Stock</h3>
+              </div>
+              <div className="d-flex align-items-center my-3 mt-4">
                 <InputGroup className="mx-4" style={{width: "120px"}}>
                   <Button variant="outline-secondary" id="button-addon1">
                     -
@@ -82,7 +85,9 @@ function PlantInformation() {
                     +
                   </Button>
                 </InputGroup>
-                <div>In Stock</div>
+                <div>
+                  <MyButton size="lg" msg="ADD TO CART"/>
+                </div>
               </div>
               <Accordion defaultActiveKey="0">
                 <Accordion.Item eventKey="0">
@@ -141,27 +146,27 @@ function PlantInformation() {
                   <Accordion.Body className="">
                     <Stack className="ms-4">
                       <div className="d-flex mb-2 align-items-center">
-                        <h5 className="me-3 mb-0">ABCDE: </h5>
+                        <h6 className="me-3 mb-0">ABCDE: </h6>
                         <div>HADADASD</div>
                       </div>
                       <div className="d-flex mb-2 align-items-center">
-                        <h5 className="me-3 mb-0">ABCDE: </h5>
+                        <h6 className="me-3 mb-0">ABCDE: </h6>
                         <div>HADADASD</div>
                       </div>
                       <div className="d-flex mb-2 align-items-center">
-                        <h5 className="me-3 mb-0">ABCDE: </h5>
+                        <h6 className="me-3 mb-0">ABCDE: </h6>
                         <div>HADADASD</div>
                       </div>
                       <div className="d-flex mb-2 align-items-center">
-                        <h5 className="me-3 mb-0">ABCDE: </h5>
+                        <h6 className="me-3 mb-0">ABCDE: </h6>
                         <div>HADADASD</div>
                       </div>
                       <div className="d-flex mb-2 align-items-center">
-                        <h5 className="me-3 mb-0">ABCDE: </h5>
+                        <h6 className="me-3 mb-0">ABCDE: </h6>
                         <div>HADADASD</div>
                       </div>
                       <div className="d-flex mb-2 align-items-center">
-                        <h5 className="me-3 mb-0">ABCDE: </h5>
+                        <h6 className="me-3 mb-0">ABCDE: </h6>
                         <div>HADADASD</div>
                       </div>
                     </Stack>
