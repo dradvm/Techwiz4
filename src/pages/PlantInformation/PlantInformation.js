@@ -4,7 +4,7 @@ import { Accordion, Col, Container, Row, Stack } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import img from "@images/test.jpg"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPenToSquare, faSeedling, faStar, faTags } from "@fortawesome/free-solid-svg-icons";
+import { faCircleInfo, faPenToSquare, faSeedling, faStar, faTags } from "@fortawesome/free-solid-svg-icons";
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
@@ -140,7 +140,7 @@ function PlantInformation() {
                   </Accordion.Body>
                 </Accordion.Item><Accordion.Item eventKey="3">
                   <Accordion.Header className="d-flex align-items-center">
-                    <FontAwesomeIcon icon={faSeedling} className="me-3" size="xl"></FontAwesomeIcon>
+                    <FontAwesomeIcon icon={faCircleInfo} className="me-3" size="xl"></FontAwesomeIcon>
                     Plant Details
                   </Accordion.Header>
                   <Accordion.Body className="">

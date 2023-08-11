@@ -11,8 +11,8 @@ function Header() {
   return (
     <>
       <HeaderBg/>
-      <Container className="mt-1">
-        <Row className={clsx("align-items-center", "border-bottom", "bottom-black")}>
+      <Container className="mt-1" fluid>
+        <Row className={clsx("align-items-center", "border-bottom", "bottom-black", "px-5")}>
           <Col ><div style={{width: "200px", cursor: "pointer"}} className="overflow-hidden"><img src={logo} alt= "logo-website" className="w-100 h-100"/></div></Col>
           <Col className={clsx("align-items-center")} >
             <div className={clsx(style["nav-bar"], "d-flex", "justify-content-between", "align-items-center")}>
@@ -35,13 +35,13 @@ function Header() {
                   </div>
                 </div>
               </Link>
-              <Link to = "/" className={clsx(style["nav-bar__item"],style["icon"], style["shopping-cart-icon"], "ms-3", "text-decoration-none", "position-relative", "z-3")}>
-                <FontAwesomeIcon icon={faBagShopping} size="lg" className="p-2"/>
+              <div className={clsx(style["nav-bar__item"],style["icon"], style["shopping-cart-icon"], "ms-3", "position-relative", "z-3")}>
+                <Link  to = "/shopping-cart" className="text-decoration-none text-black"><FontAwesomeIcon icon={faBagShopping} size="lg" className="p-2"/></Link>
                 <div className={clsx(style["badge"], "position-absolute", "rounded-circle", "d-flex", "justify-content-center", "align-items-center")}>1</div>
                 <div  className={clsx(style["shopping-cart"])}>
                   <ShoppingCart></ShoppingCart>
                 </div>
-              </Link>
+              </div>
             </div>
           </Col>
         </Row>
