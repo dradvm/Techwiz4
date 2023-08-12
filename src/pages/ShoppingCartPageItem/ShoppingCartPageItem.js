@@ -5,15 +5,18 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { cartContext } from "../../App";
 import { checkContext } from "../ShoppingCartPage/ShoppingCartPage";
+import { useNavigate } from "react-router-dom";
+import { productList } from "../../functions/Filter";
 function ShoppingCartPageItem(props) {
   let importedCart = useContext(cartContext);
   let importedCheck = useContext(checkContext);
   let product = props.product;
-  let index = importedCart.cart.indexOf(product);
+  let index = importedCart.cart.indexOf(props.product);
   let img = require('./../../images/plants/' + product[1].imgSources[0]);
+  let navigation = useNavigate();
   function checkHandle()
   {
     importedCheck.setCheck((prev) => 
@@ -82,6 +85,24 @@ function ShoppingCartPageItem(props) {
       return prev;
     })
   }
+  function toDetail()
+  {
+    let navIndex = 0;
+    let found = false;
+    productList.forEach((item, index) =>
+    {
+      if (found)
+      {
+        return;
+      }
+      if (JSON.stringify(item) === JSON.stringify(product[1]))
+      {
+        navIndex = index;
+        found = true;
+      }
+    })
+    navigation("/shop/" + product[1].name, {state: navIndex});
+  }
   return (
     <div className="border-bottom">
       <Row className="d-flex align-items-center py-2">
@@ -95,7 +116,7 @@ function ShoppingCartPageItem(props) {
             onClick={checkHandle}
           />
         </Col>
-        <Col xs={6}>
+        <Col xs={6} onClick={toDetail}>
           <div className="d-flex align-items-center">
             <div className="me-5" style={{ width: "100px" }}>
               <img src={img} alt="smail-img" className="w-100" />

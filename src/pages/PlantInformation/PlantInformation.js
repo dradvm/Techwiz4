@@ -11,10 +11,12 @@ import MyButton from "../../components/MyButton/MyButton";
 import { productList } from "../../functions/Filter";
 import { useContext, useState } from "react";
 import { cartContext } from "../../App";
+import backToTop from "../../functions/BackToTop";
 function PlantInformation() {
+  backToTop();
   const location = useLocation();
   const importedCart = useContext(cartContext);
-  const index = location.state;
+  let index = location.state;
   let product = productList[index];
   let imgSrcs = product.imgSources.reduce((res, cur) => [...res, require('./../../images/plants/' + cur)], []).filter((item, index) => index < 3);
   const [curImg, setCurImg] = useState(imgSrcs[0]);
