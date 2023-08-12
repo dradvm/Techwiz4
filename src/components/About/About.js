@@ -23,12 +23,12 @@ function About() {
           </Col>
           <Col lg={4} xs = {12} className={clsx("d-flex", "flex-column", "mb-lg-0 mb-4", "align-items-lg-start align-items-center text-lg-start text-center")}>
             <img src={img2} alt = "img-about-2" className="w-25" />
-            <h5 className={clsx("mt-3", "text-primary-color")}>Indoor Plants</h5>
+            <h5 className={clsx("mt-3", "text-primary-color")}>Outdoor Beauties</h5>
             <p className="w-75">Discover outdoor plant wonders that transform your landscapes. Cultivate vibrant gardens and enjoy nature's bounty.</p>
           </Col>
           <Col lg={4} xs = {12} className={clsx("d-flex", "flex-column", "mb-lg-0 mb-4", "align-items-lg-start align-items-center text-lg-start text-center")}>
             <img src={img3} alt = "img-about-3" className="w-25" />
-            <h5 className={clsx("mt-3", "text-primary-color")}>Indoor Plants</h5>
+            <h5 className={clsx("mt-3", "text-primary-color")}>Garden Care Essentials</h5>
             <p className="w-75">Nurture your garden with our premium care essentials. From tools to tips, we're here to help your garden thrive and flourish.</p>
           </Col>
         </Row>

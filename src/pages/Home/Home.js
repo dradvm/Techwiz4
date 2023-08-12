@@ -3,6 +3,7 @@
 import TopPreviewSection from "@components/TopPreviewSection/TopPreviewSection";
 import About from "../../components/About/About";
 import FeatureItems from "../../components/FeatureItems/FeatureItems";
+import SiteMap from "../../components/SiteMap/SiteMap";
 
 function Home() {
   return (
@@ -10,6 +11,7 @@ function Home() {
       <TopPreviewSection></TopPreviewSection>
       <About></About>
       <FeatureItems></FeatureItems>
+      <SiteMap></SiteMap>
     </>
   );
 }

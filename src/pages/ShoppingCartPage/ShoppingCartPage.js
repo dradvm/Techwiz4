@@ -75,7 +75,7 @@ function ShoppingCartPage() {
               <div className="fs-5 fw-semibold">Total:</div>
               <div className="fs-4 ms-3 me-5 fw-bold">{'$' + sum}</div>
               <Link onClick={toCheckOut}>
-                <button className={clsx(style["checkout"], "me-5", "px-2 py-2")}>Check Out</button>
+                <button className={clsx(style["checkout"], "me-lg-5 me-3", "px-2 py-2")}>Check Out</button>
               </Link>
             </Col>
           </Row>
