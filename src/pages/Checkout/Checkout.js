@@ -4,10 +4,12 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { Col, Container, Row } from "react-bootstrap";
 import img from "@images/vertical-img.jpg"
-import { useLocation } from "react-router-dom";
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
+import { checkContext } from "../ShoppingCartPage/ShoppingCartPage";
+import { cartContext } from "../../App";
+import { useLocation } from "react-router";
 function Checkout() {
-  const location = useLocation();
+  let location = useLocation();
   let sum = location.state;
   const [email, setEmail] = useState('');
   const [credit, setCredit] = useState('');
@@ -17,6 +19,8 @@ function Checkout() {
   let creditRef = useRef(null);
   let dateRef = useRef(null);
   let cvvRef = useRef(null);
+  const importedCheck = useContext(checkContext);
+  const importedCart = useContext(cartContext);
   function emailEnter(e)
   {
     if (e.key === 'Enter')
@@ -74,13 +78,18 @@ function Checkout() {
       cvvRef.current.focus();
       return;
     }
+    //let details = importedCart.cart.filter((item, index) => importedCheck.check[index]);
+    //let newCart = importedCart.cart.filter((item, index) => !importedCheck.check[index]);
+    importedCart.setCart(newCart);
+    importedCheck.setCheck(newCart.map(() => true));
     let pay =
     {
       email: email,
       credit: credit,
       expDate: date,
       cvv: cvv,
-      value: sum
+      value: sum,
+      //details: details
     };
     let payDetails = (JSON.parse(localStorage.getItem('payDetails')) || []);
     localStorage.setItem('payDetails', JSON.stringify([...payDetails, pay]));
@@ -103,14 +112,14 @@ function Checkout() {
                 </div>
 
                 <div className={clsx(style["input-group"], "d-flex flex-column mb-3")}>
-                  <input type="text" id="email-address" name="email-address" placeholder="Credit Card Number..." ref={creditRef} value={credit} onChange={(e) => setCredit(e.target.value)} onKeyDown={(e) => creditEnter(e)}/>
+                  <input type="text" id="email-address" name="credit-number" placeholder="Credit Card Number..." ref={creditRef} value={credit} onChange={(e) => setCredit(e.target.value)} onKeyDown={(e) => creditEnter(e)}/>
                 </div>
                 <div className="d-flex justify-content-between">
                   <div className={clsx(style["input-group"], "d-flex flex-column mb-3")} style={{ width: "40%" }} >
-                    <input type="date" id="email-address" name="email-address" placeholder="Expiry Date" ref={dateRef} value={date} onChange={(e) => setDate(e.target.value)} onKeyDown={(e) => dateEnter(e)}/>
+                    <input type="date" id="email-address" name="date" placeholder="Expiry Date" ref={dateRef} value={date} onChange={(e) => setDate(e.target.value)} onKeyDown={(e) => dateEnter(e)}/>
                   </div>
                   <div className={clsx(style["input-group"], "d-flex flex-column mb-3")} style={{ width: "40%" }} >
-                    <input type="text" id="email-address" name="email-address" placeholder="CVV" ref={cvvRef} value={cvv} onChange={(e) => setcvv(e.target.value)} onKeyDown={(e) => cvvEnter(e)}/>
+                    <input type="text" id="email-address" name="cvv" placeholder="CVV" ref={cvvRef} value={cvv} onChange={(e) => setcvv(e.target.value)} onKeyDown={(e) => cvvEnter(e)}/>
                   </div>
                 </div>
               </div>

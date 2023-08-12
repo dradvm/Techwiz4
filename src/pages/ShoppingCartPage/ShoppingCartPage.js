@@ -7,7 +7,6 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { cartContext } from "../../App";
 const checkContext = createContext();
-
 function ShoppingCartPage() {
   let importedCart = useContext(cartContext);
   const [check, setCheck] = useState(importedCart.cart.map(() => true));
@@ -35,7 +34,7 @@ function ShoppingCartPage() {
   {
     if (sum > 0)
     {
-      navigation('/checkout', {state : sum});
+      navigation('/checkout');
     }
   }
   return (
@@ -74,7 +73,7 @@ function ShoppingCartPage() {
             <Col xs={12} className="d-flex align-items-center justify-content-end">
               <div className="fs-5 fw-semibold">Total:</div>
               <div className="fs-4 ms-3 me-5 fw-bold">{'$' + sum}</div>
-              <Link onClick={toCheckOut}>
+              <Link onClick={toCheckOut} state={sum}>
                 <button className={clsx(style["checkout"], "me-5", "px-2 py-2")}>Check Out</button>
               </Link>
             </Col>
