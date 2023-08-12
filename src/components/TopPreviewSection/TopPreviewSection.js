@@ -4,9 +4,17 @@ import style from "./TopPreviewSection.module.scss";
 import bigImage from "@images/big-shopping-img.webp"
 import { Container, Row, Col } from "react-bootstrap";
 import MyButton from "../MyButton/MyButton";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import { activeContext } from "../../App";
+import { useContext } from "react";
 function TopPreviewSection() {
+  let navigation = useNavigate();
+  let importedActive = useContext(activeContext);
+  function toShop()
+  {
+    importedActive.setActive('shopping');
+    navigation('/shop');
+  }
   return (
     <Container className={clsx(style["top-preview-section"], "pb-5 bg-white")} fluid>
       <Container className="pt-lg-3 pt-5">
@@ -14,17 +22,17 @@ function TopPreviewSection() {
           <Col lg={6} xs={{ size: 12, order: "last" }} className={clsx("d-flex", "flex-lg-wrap-reverse", "justify-content-center ", "flex-column")}>
             <div className="d-flex flex-column align-items-lg-start align-items-center">
               <h1 className={clsx("d-lg-block d-none", style["big-title"])}>
-                <div><span className={clsx("text-primary-color")}>Green</span> Living</div>
-                <div>Explore <span className={clsx("text-primary-color")}>Now!</span></div>
+                <div><span className={clsx("text-primary-light-color")}>Green</span> Living</div>
+                <div>Explore <span className={clsx("text-primary-light-color")}>Now!</span></div>
               </h1>
               <h1 className={clsx("d-lg-none text-center mb-4")} style={{fontSize: "3rem"}}>
-                <div><span className={clsx("text-primary-color")}>Green</span> Living</div>
-                <div>Explore <span className={clsx("text-primary-color")}>Now!</span></div>
+                <div><span className={clsx("text-primary-light-color")}>Green</span> Living</div>
+                <div>Explore <span className={clsx("text-primary-light-color")}>Now!</span></div>
               </h1>
               <h6 className={clsx("mt-4, mb-5", "d-lg-block d-none")} style={{ textAlign: "justify" }}>
                 Elevate your living space with our meticulously chosen indoor plants, a harmonious fusion of nature and design, perfect for plant enthusiasts seeking to infuse vitality and elegance into their surroundings.
               </h6>
-              <Link to="/shop" className="d-flex mb-lg-0 mb-5 text-decoration-none text-white"><MyButton to="/shop" size="lg" msg="Shop Now" /></Link>
+              <Link className="d-flex mb-lg-0 mb-5 text-decoration-none text-white" onClick={toShop}><MyButton to="/shop" size="lg" msg="Shop Now"/></Link>
             </div>
           </Col>
           <Col lg={6} xs={{ size: 12, order: "first" }} >

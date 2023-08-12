@@ -7,9 +7,12 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-regular-svg-icons";
 import { useContext, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { responsiveContext } from "../../App";
+import { activeContext } from "../../App";
 function Footer() {
+  let navigation = useNavigate();
+  let importedActive = useContext(activeContext);
   const [subEmail, setSubEmail] = useState('');
   let ref = useRef(null);
   const {isDesktop} = useContext(responsiveContext)
@@ -61,16 +64,21 @@ function Footer() {
       ref.current.focus();
     }
   }
+  function goTo(path, active)
+  {
+    importedActive.setAcive(active);
+    navigation(path);
+  }
   return (
     <Container fluid className={clsx(style["thank-you"], "d-flex", "flex-column", "text-white", "align-items-center", "py-5")}>
       <div className={clsx(style["nav-bar"], "d-flex", "flex-lg-row flex-column", "align-items-lg-start align-items-center")}>
-        <Link className="mb-lg-0 mb-3 text-decoration-none text-white fw-bold" to = "/">HOME</Link>
+        <Link className="mb-lg-0 mb-3 text-decoration-none text-white fw-bold" onClick={() => goTo('/', 'home')}>HOME</Link>
         <span className="mx-3 d-lg-block d-none">|</span>
-        <Link className="mb-lg-0 mb-3 text-decoration-none text-white fw-bold" to = "/shop">SHOP</Link>
+        <Link className="mb-lg-0 mb-3 text-decoration-none text-white fw-bold" onClick={() => goTo('/shop', 'shopping')}>SHOP</Link>
         <span className="mx-3 d-lg-block d-none">|</span>
-        <Link className="mb-lg-0 mb-3 text-decoration-none text-white fw-bold" to = "/contact">CONTACT US</Link>
+        <Link className="mb-lg-0 mb-3 text-decoration-none text-white fw-bold" onClick={() => goTo('/contact', 'contact')}>CONTACT US</Link>
         <span className="mx-3 d-lg-block d-none">|</span>
-        <Link className="mb-lg-0 mb-3 text-decoration-none text-white fw-bold" to = "/feedback">FEEDBACK</Link>
+        <Link className="mb-lg-0 mb-3 text-decoration-none text-white fw-bold" onClick={() => goTo('/feeback', 'feedback')}>FEEDBACK</Link>
       </div>
       <div className={clsx("mt-lg-5 mt-2", style["subscribe"], "d-flex", "flex-column", "align-items-center")}>
         <h3>Subscribe to our newsletter</h3>

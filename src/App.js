@@ -7,7 +7,9 @@ import { useMediaQuery } from 'react-responsive'
 import { useNavigate } from 'react-router-dom';
 const cartContext = createContext();
 const responsiveContext = createContext();
+const activeContext = createContext();
 function App() {
+  const [active, setActive] = useState('home');
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || []);
   const [forceUpdate, setForceUpdate] = useState(0);
   const isMobileOrTablet = useMediaQuery({ maxWidth: "1023px"})
@@ -24,16 +26,18 @@ function App() {
   }, []);
 
   return (
-    <cartContext.Provider value={{cart, setCart, setForceUpdate}}>
-      <responsiveContext.Provider value = {{isDesktop, isMobile, isMobileOrTablet}}>
-        <div className="App bg-body-tertiary">
-          <Header/>
-          <Outlet/>
-          <Footer/>
-        </div>
-      </responsiveContext.Provider>
-    </cartContext.Provider>
+    <activeContext.Provider value={{active, setActive}}>
+      <cartContext.Provider value={{cart, setCart, setForceUpdate}}>
+        <responsiveContext.Provider value = {{isDesktop, isMobile, isMobileOrTablet}}>
+          <div className="App bg-body-tertiary">
+            <Header/>
+            <Outlet/>
+            <Footer/>
+          </div>
+        </responsiveContext.Provider>
+      </cartContext.Provider>
+    </activeContext.Provider>
   );
 }
 export default App;
-export {cartContext, responsiveContext};
+export {cartContext, responsiveContext, activeContext};

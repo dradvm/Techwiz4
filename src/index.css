@@ -14,6 +14,7 @@ code {
 :root {
   --primary-color: rgb(48, 105, 75);
   --secondary-color: rgb(74,37,17);
+  --primary-light-color: rgb(116,186,37);
 }
 
 .text-primary-color {
@@ -23,7 +24,9 @@ code {
 .text-secondary-color {
   color: var(--secondary-color)!important;
 }
-
+.text-primary-light-color {
+  color: var(--primary-light-color)!important;
+}
 
 .bg-primary-color {
   background-color: var(--primary-color)!important;
@@ -31,6 +34,9 @@ code {
 
 .bg-secondary-color {
   background-color: var(--secondary-color)!important;
+}
+.bg-primary-light-color {
+  background-color: var(--primary-light-color)!important;
 }
 
 input[type="checkbox"]:checked,

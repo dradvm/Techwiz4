@@ -46,7 +46,7 @@ function Item(props) {
       <img src = {imgSrc} alt="Feature-img" className="w-100 h-100" loading="lazy"/>
       <div className="p-2 position-absolute bottom-0 w-100">
         {/* Truyền data qua state của Link */}
-        <Link to = {clsx("/shop/" + props.product.name)} state={index} className={clsx("text-decoration-none")}><div className={clsx("mb-2 p-2 bg-secondary-color text-white fw-bold text-center ", style["details"])}>VIEW DETAILS</div></Link>
+        <Link to = {clsx("/shop/" + props.product.name)} state={index} className={clsx("text-decoration-none")}><div className={clsx("mb-2 p-2 bg-primary-color text-white fw-bold text-center ", style["details"])}>VIEW DETAILS</div></Link>
         <div className={clsx("px-3 py-2 bg-white w-100 border d-flex flex-column justify-content-between align-items-center rounded", style["group"])}>
           <div className="d-flex align-items-center justify-content-start w-100 fw-semibold" style={{minHeight: "50px"}}>{props.product.name}</div>
           <div className="d-flex align-items-center justify-content-between w-100">

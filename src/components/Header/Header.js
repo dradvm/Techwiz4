@@ -13,9 +13,10 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import MediaQuery from "react-responsive";
+import { activeContext } from "../../App";
 function Header() {
   const [search, setSearch] = useState('');
-  const [active, setActive] = useState('home');
+  let importedActive = useContext(activeContext);
   const importedCart = useContext(cartContext);
   const navigate = useNavigate();
   const { isDesktop } = useContext(responsiveContext)
@@ -31,11 +32,11 @@ function Header() {
     }
   }
   function getActive() {
-    setActive('');
+    importedActive.setActive('');
   }
   function backHome() {
     navigate('/');
-    setActive('home');
+    importedActive.setActive('home');
   }
   return (
     <>
@@ -45,10 +46,10 @@ function Header() {
         <Col xs><div style={{ width: "200px", cursor: "pointer" }} className="overflow-hidden" onClick={backHome}><img src={logo} alt="logo-website" className="w-100 h-100" /></div></Col>
         <Col className={clsx("align-items-center")} >
           <div className={clsx(style["nav-bar"], "d-flex", "justify-content-between", "align-items-center")}>
-            <Link to="/" className={clsx(style["nav-bar__item"], "text-decoration-none", active == 'home' ? style["nav-bar__item--home"] : '')} onClick={() => setActive('home')}>Home</Link>
-            <Link to="/shop" className={clsx(style["nav-bar__item"], "text-decoration-none", active == 'shopping' ? style["nav-bar__item--home"] : '')} onClick={() => setActive('shopping')}>Shopping</Link>
-            <Link to="/contact" className={clsx(style["nav-bar__item"], "text-decoration-none", active == 'contact' ? style["nav-bar__item--home"] : '')} onClick={() => setActive('contact')}>Contact Us</Link>
-            <Link to="/feedback" className={clsx(style["nav-bar__item"], "text-decoration-none", active == 'feedback' ? style["nav-bar__item--home"] : '')} onClick={() => setActive('feedback')}>Feedback</Link>
+            <Link to="/" className={clsx(style["nav-bar__item"], "text-decoration-none", importedActive.active == 'home' ? style["nav-bar__item--home"] : '')} onClick={() => importedActive.setActive('home')}>Home</Link>
+            <Link to="/shop" className={clsx(style["nav-bar__item"], "text-decoration-none", importedActive.active == 'shopping' ? style["nav-bar__item--home"] : '')} onClick={() => importedActive.setActive('shopping')}>Shopping</Link>
+            <Link to="/contact" className={clsx(style["nav-bar__item"], "text-decoration-none", importedActive.active == 'contact' ? style["nav-bar__item--home"] : '')} onClick={() => importedActive.setActive('contact')}>Contact Us</Link>
+            <Link to="/feedback" className={clsx(style["nav-bar__item"], "text-decoration-none", importedActive.active == 'feedback' ? style["nav-bar__item--home"] : '')} onClick={() => importedActive.setActive('feedback')}>Feedback</Link>
 
           </div>
         </Col>

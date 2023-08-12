@@ -8,7 +8,7 @@ function SiteMap() {
   return (
     <Container fluid className="bg-white border py-5">
       <Container>
-        <h1>Site Map</h1>
+        <h2 className="text-secondary-color fw-bold">Site Map</h2>
         <div><img src={siteMap} alt="Site-map img" className="w-100"/></div>
       </Container>
     </Container>

@@ -17,7 +17,7 @@ function FeatureItems() {
       <Container className="py-5 bg-white" fluid>
         <Container>
         <div className="d-flex align-items-center justify-content-between">
-          <h2 className="text-secondary-color fw-b">Our Feature</h2>
+          <h2 className="text-secondary-color fw-bold">Our Feature</h2>
           <MyButton msg = "Buy Now" />
         </div>
         <Swiper
