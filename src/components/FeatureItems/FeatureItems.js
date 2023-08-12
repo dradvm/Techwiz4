@@ -8,8 +8,11 @@ import { Container } from 'react-bootstrap';
 import Item from '../Item/Item';
 import { productList } from '../../functions/Filter'; //Mảng test, thay bằng list thật sau
 import MyButton from '../MyButton/MyButton';
+import { useContext } from 'react';
+import { responsiveContext } from '../../App';
 function FeatureItems() {
   let featuredProducts = productList.filter((item, index) => (index < 10));
+  const {isDesktop} = useContext(responsiveContext)
   return (
       <Container className="py-5 bg-white" fluid>
         <Container>
@@ -20,7 +23,7 @@ function FeatureItems() {
         <Swiper
           modules={[Autoplay]}
           loop = {true}
-          slidesPerView={4}
+          slidesPerView={isDesktop ? 4 : 1}
           spaceBetween={30}
           allowTouchMove = {false}
           autoplay = {{

@@ -6,10 +6,13 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-regular-svg-icons";
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { responsiveContext } from "../../App";
 function Footer() {
   const [subEmail, setSubEmail] = useState('');
   let ref = useRef(null);
+  const {isDesktop} = useContext(responsiveContext)
   function emailHandleOnEnter(e)
   {
     if (e.key === 'Enter')
@@ -60,19 +63,19 @@ function Footer() {
   }
   return (
     <Container fluid className={clsx(style["thank-you"], "d-flex", "flex-column", "text-white", "align-items-center", "py-5")}>
-      <div className={clsx(style["nav-bar"], "d-flex")}>
-        <div>HOME</div>
-        <span className="mx-3">|</span>
-        <div>ABOUT</div>
-        <span className="mx-3">|</span>
-        <div>CONTACT US</div>
-        <span className="mx-3">|</span>
-        <div>FEEDBACK</div>
+      <div className={clsx(style["nav-bar"], "d-flex", "flex-lg-row flex-column", "align-items-lg-start align-items-center")}>
+        <Link className="mb-lg-0 mb-3 text-decoration-none text-white fw-bold" to = "/">HOME</Link>
+        <span className="mx-3 d-lg-block d-none">|</span>
+        <Link className="mb-lg-0 mb-3 text-decoration-none text-white fw-bold" to = "/shop">SHOP</Link>
+        <span className="mx-3 d-lg-block d-none">|</span>
+        <Link className="mb-lg-0 mb-3 text-decoration-none text-white fw-bold" to = "/contact">CONTACT US</Link>
+        <span className="mx-3 d-lg-block d-none">|</span>
+        <Link className="mb-lg-0 mb-3 text-decoration-none text-white fw-bold" to = "/feedback">FEEDBACK</Link>
       </div>
-      <div className={clsx("mt-5", style["subscribe"], "d-flex", "flex-column", "align-items-center")}>
+      <div className={clsx("mt-lg-5 mt-2", style["subscribe"], "d-flex", "flex-column", "align-items-center")}>
         <h3>Subscribe to our newsletter</h3>
         
-        <InputGroup className="my-3" size="lg" style={{width: "500px"}}>
+        <InputGroup className="my-3" size="lg" style={{width: isDesktop ? "500px" : "80vw"}}>
             <Form.Control
               placeholder="Enter your email..."
               aria-label="Enter your email..."

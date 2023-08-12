@@ -71,7 +71,7 @@ function ContactUs() {
   return (
     <Container className={clsx("mb-5 mt-2", "py-5", "w-75", style["contact-us"])}>
       <Row className="bg-white p-3 rounded">
-        <Col className={clsx("d-flex", "flex-column", "justify-content-between")}>
+        <Col lg={6} xs={12} className={clsx("d-flex", "flex-column", "justify-content-between")}>
           <h2>Contact us</h2>
           <div className={clsx(style["bar"], "mt-1")}></div>
           <Form className="mt-4">
@@ -87,8 +87,8 @@ function ContactUs() {
             <Button variant="success" className="w-100" onClick={submit}>Submit</Button>
           </Form>
         </Col>
-        <Col className="d-flex justify-content-center align-items-center">
-          <img src={spImg} alt="support-img" className="w-75" />
+        <Col lg={6} xs={0} className="d-lg-flex d-none justify-content-center align-items-center">
+          <img src={spImg} alt="support-img" className="w-75" loading="lazy"/>
         </Col>
       </Row>
       <div className="mt-5">
@@ -97,7 +97,7 @@ function ContactUs() {
         </iframe>
       </div>
       <Row className="align-items-center mt-5">
-        <Col className="d-flex justify-content-around">
+        <Col lg={4} xs={12} className="d-flex mt-lg-0 mt-3 justify-content-lg-around justify-content-start">
           <Stack direction="horizontal" gap={3}>
             <FontAwesomeIcon icon={faLocationDot} style={{ fontSize: "3.4rem", color: "#198754" }} />
             <Stack className="justify-content-around">
@@ -106,7 +106,7 @@ function ContactUs() {
             </Stack>
           </Stack>
         </Col>
-        <Col className="d-flex justify-content-around">
+        <Col lg={4} xs={12} className="d-flex mt-lg-0 mt-3 justify-content-lg-around justify-content-start">
           <Stack direction="horizontal" gap={3}>
             <FontAwesomeIcon icon={faEnvelope} style={{ fontSize: "3.4rem", color: "#198754" }} />
             <Stack className="justify-content-around">
@@ -115,7 +115,7 @@ function ContactUs() {
             </Stack>
           </Stack>
         </Col>
-        <Col className="d-flex justify-content-around">
+        <Col lg={4} xs={12} className="d-flex mt-lg-0 mt-3 justify-content-lg-around justify-content-start">
           <Stack direction="horizontal" gap={3}>
             <FontAwesomeIcon icon={faPhoneVolume} style={{ fontSize: "3.4rem", color: "#198754" }} />
             <Stack className="justify-content-around">

@@ -10,6 +10,7 @@ import { cartContext } from "../../App";
 import { checkContext } from "../ShoppingCartPage/ShoppingCartPage";
 import { useNavigate } from "react-router-dom";
 import { productList } from "../../functions/Filter";
+import MediaQuery from "react-responsive";
 function ShoppingCartPageItem(props) {
   let importedCart = useContext(cartContext);
   let importedCheck = useContext(checkContext);
@@ -23,22 +24,17 @@ function ShoppingCartPageItem(props) {
     {
       prev[index] = !prev[index];
       let all = true;
-      prev.forEach((item) =>
-      {
-        if (!all)
-        {
+      prev.forEach((item) => {
+        if (!all) {
           return;
         }
-        if (!item)
-        {
+        if (!item) {
           all = false;
         }
-        if (all)
-        {
+        if (all) {
           importedCheck.setCheckAll(true);
         }
-        else
-        {
+        else {
           importedCheck.setCheckAll(false);
         }
       });
@@ -46,41 +42,32 @@ function ShoppingCartPageItem(props) {
     });
     importedCart.setForceUpdate((prev) => prev + 1);
   }
-  function minusQuantity()
-  {
-    if (product[0] > 1)
-    {
-      importedCart.setCart((prev) =>
-      {
+  function minusQuantity() {
+    if (product[0] > 1) {
+      importedCart.setCart((prev) => {
         prev[index][0]--;
         return prev;
       })
       importedCart.setForceUpdate((prev) => prev + 1);
       return;
     }
-    if (product[0] === 1)
-    {
-      importedCart.setCart((prev) =>
-      {
+    if (product[0] === 1) {
+      importedCart.setCart((prev) => {
         prev = prev.filter((item) => JSON.stringify(item) != JSON.stringify(product));
         return prev;
       })
     }
   }
-  function plusQuantity()
-  {
-    importedCart.setCart((prev) =>
-    {
+  function plusQuantity() {
+    importedCart.setCart((prev) => {
       prev[index][0]++;
       return prev;
     })
     importedCart.setForceUpdate((prev) => prev + 1);
     return;
   }
-  function removeFromCart()
-  {
-    importedCart.setCart((prev) =>
-    {
+  function removeFromCart() {
+    importedCart.setCart((prev) => {
       prev = prev.filter((item) => JSON.stringify(item) != JSON.stringify(product));
       return prev;
     })
@@ -105,50 +92,129 @@ function ShoppingCartPageItem(props) {
   }
   return (
     <div className="border-bottom">
-      <Row className="d-flex align-items-center py-2">
-        <Col xs={1} className="text-center">
-          <Form.Check
-            inline
-            name={product[1].name}
-            type="checkbox"
-            id={importedCart.cart.indexOf(product)}
-            checked={importedCheck.check[index]}
-            onClick={checkHandle}
-          />
-        </Col>
-        <Col xs={6} onClick={toDetail}>
-          <div className="d-flex align-items-center">
-            <div className="me-5" style={{ width: "100px" }}>
-              <img src={img} alt="smail-img" className="w-100" />
-            </div>
-            <div className="fw-semibold fs-5">
-              {product[1].name}
-            </div>
-          </div>
-        </Col>
-        <Col xs={1} className="text-center">
-          {'$' + product[1].price}
-        </Col>
-        <Col xs={2} className="text-center">
-          <InputGroup className="mx-5" style={{ width: "120px" }}>
-            <Button variant="success" id="button-addon1" onClick={minusQuantity}>
-              -
-            </Button>
-            <Form.Control
-              aria-label="Quantity"
-              aria-describedby="quantity"
-              disabled={true}
-              className="text-center"
-              value={product[0]}
+      <MediaQuery minWidth={992}>
+        <Row className="d-flex align-items-center py-2">
+          <Col xs={1} className="text-center" onClick={toDetail}>
+            <Form.Check
+              inline
+              name={product[1].name}
+              type="checkbox"
+              id={importedCart.cart.indexOf(product)}
+              checked={importedCheck.check[index]}
+              onClick={checkHandle}
             />
-            <Button variant="success" id="button-addon1" onClick={plusQuantity}>
-              +
-            </Button>
-          </InputGroup>
-        </Col>
-        <Col xs={1} className="text-center">{'$' + (product[0] * product[1].price).toFixed(2)}</Col>
-        <Col xs={1} className="text-center" onClick={removeFromCart}><FontAwesomeIcon icon={faTrash}/></Col>
-      </Row>
+          </Col>
+          <Col xs={6} onClick={toDetail}>
+            <div className="d-flex align-items-center">
+              <div className="me-5" style={{ width: "100px" }}>
+                <img src={img} alt="smail-img" className="w-100" />
+              </div>
+              <div className="fw-semibold fs-5">
+                {product[1].name}
+              </div>
+            </div>
+          </Col>
+          <Col xs={1} className="text-center">
+            {'$' + product[1].price}
+          </Col>
+          <Col xs={2} className="text-center">
+            <InputGroup className="mx-5" style={{ width: "120px" }}>
+              <Button variant="success" id="button-addon1" onClick={minusQuantity}>
+                -
+              </Button>
+              <Form.Control
+                aria-label="Quantity"
+                aria-describedby="quantity"
+                disabled={true}
+                className="text-center"
+                value={product[0]}
+              />
+              <Button variant="success" id="button-addon1" onClick={plusQuantity}>
+                +
+              </Button>
+            </InputGroup>
+          </Col>
+          <Col xs={1} className="text-center">{'$' + (product[0] * product[1].price).toFixed(2)}</Col>
+          <Col xs={1} className="text-center" onClick={removeFromCart}><FontAwesomeIcon icon={faTrash} /></Col>
+        </Row>
+      </MediaQuery>
+
+
+      <MediaQuery maxWidth={992}>
+        <Row className="d-flex align-items-center py-2 px-lg-0 px-3">
+          <Col xs={1} className="text-center">
+            <Form.Check
+              inline
+              name={product[1].name}
+              type="checkbox"
+              id={importedCart.cart.indexOf(product)}
+              checked={importedCheck.check[index]}
+              onClick={checkHandle}
+            />
+          </Col>
+          <Col xs={10}>
+            <div className="d-flex justify-content-between">
+              <div className="" style={{ width: "50px" }}>
+                <img src={img} alt="smail-img" className="w-100 h-100" />
+              </div>
+              <div className="d-flex align-items-center ">
+                <InputGroup className="" style={{ width: "100px" }}>
+                  <Button variant="success" id="button-addon1" onClick={minusQuantity}>
+                    -
+                  </Button>
+                  <Form.Control
+                    aria-label="Quantity"
+                    aria-describedby="quantity"
+                    disabled={true}
+                    className="text-center"
+                    value={product[0]}
+                  />
+                  <Button variant="success" id="button-addon1" onClick={plusQuantity}>
+                    +
+                  </Button>
+                </InputGroup>
+                <div className="d-flex flex-column align-items-center justify-content-between">
+                  <div>{'$' + product[1].price}</div>
+                  <div>{'$' + (product[0] * product[1].price).toFixed(2)}</div>
+                </div>
+                
+              </div>
+            </div>
+          </Col>
+          {/* <Col xs={6}>
+            <div className="d-flex align-items-center">
+              <div className="me-5" style={{ width: "100px" }}>
+                <img src={img} alt="smail-img" className="w-100" />
+              </div>
+              <div className="fw-semibold fs-5">
+                {product[1].name}
+              </div>
+            </div>
+          </Col>
+          <Col xs={1} className="text-center">
+            {'$' + product[1].price}
+          </Col>
+          <Col xs={2} className="text-center">
+            <InputGroup className="mx-5" style={{ width: "120px" }}>
+              <Button variant="success" id="button-addon1" onClick={minusQuantity}>
+                -
+              </Button>
+              <Form.Control
+                aria-label="Quantity"
+                aria-describedby="quantity"
+                disabled={true}
+                className="text-center"
+                value={product[0]}
+              />
+              <Button variant="success" id="button-addon1" onClick={plusQuantity}>
+                +
+              </Button>
+            </InputGroup>
+          </Col>
+          <Col xs={1} className="text-center">{'$' + (product[0] * product[1].price).toFixed(2)}</Col> */}
+          <Col xs={1} className="text-center me-lg-0" onClick={removeFromCart}><FontAwesomeIcon icon={faTrash} /></Col>
+        </Row>
+      </MediaQuery>
     </div>
   );
 }
