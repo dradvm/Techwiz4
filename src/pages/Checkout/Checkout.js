@@ -99,11 +99,11 @@ function Checkout() {
     setcvv('');
   }
   return (
-    <Container className={clsx("my-5 p-4 bg-white d-flex align-items-center rounded", style["checkout-page"])} style={{ maxWidth: "900px" }}>
+    <Container className={clsx("my-5 p-4  d-flex align-items-center rounded")} style={{ maxWidth: "900px" }}>
       <div className={clsx("w-100")}>
-        <Row>
-          <Col xs="7">
-            <div className="p-5 d-flex flex-column justify-content-between h-100">
+        <Row className={clsx("gx-0 p-lg-0 p-5 bg-white" , style["checkout-page"])}>
+          <Col lg="7" xs={12}>
+            <div className="p-lg-5 p-0 d-flex flex-column justify-content-between h-100">
               <div>
                 <h5 className="mb-3">Payment Details</h5>
 
@@ -134,7 +134,7 @@ function Checkout() {
               </div>
             </div>
           </Col>
-          <Col xs="5">
+          <Col lg="5" xs={0} className="d-lg-block d-none">
             <img src={img} alt="vertical-img" className="w-100 rounded" />
           </Col>
         </Row>

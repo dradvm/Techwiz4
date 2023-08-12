@@ -153,11 +153,11 @@ function ShoppingCartPageItem(props) {
             />
           </Col>
           <Col xs={10}>
-            <div className="d-flex justify-content-between">
+            <div className="d-flex justify-content-lg-between">
               <div className="" style={{ width: "50px" }}>
                 <img src={img} alt="smail-img" className="w-100 h-100" />
               </div>
-              <div className="d-flex align-items-center ">
+              <div className="d-flex align-items-center mx-3">
                 <InputGroup className="" style={{ width: "100px" }}>
                   <Button variant="success" id="button-addon1" onClick={minusQuantity}>
                     -
@@ -173,7 +173,7 @@ function ShoppingCartPageItem(props) {
                     +
                   </Button>
                 </InputGroup>
-                <div className="d-flex flex-column align-items-center justify-content-between">
+                <div className="d-flex flex-column align-items-center justify-content-between mx-3">
                   <div>{'$' + product[1].price}</div>
                   <div>{'$' + (product[0] * product[1].price).toFixed(2)}</div>
                 </div>
