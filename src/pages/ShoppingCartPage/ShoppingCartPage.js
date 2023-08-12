@@ -35,8 +35,8 @@ function ShoppingCartPage() {
       <Stack>
         <Stack className="bg-white rounded border">
           <div className="border-bottom">
-            <Row className="d-flex align-items-center py-3" >
-              <Col xs={1} className="text-center">
+            <Row className="d-flex align-items-lg-center py-3" >
+              <Col lg={1} xs={3} className="text-center">
                 <Form.Check
                   inline
                   name="shopping-cart-checkbox-all"
@@ -46,11 +46,11 @@ function ShoppingCartPage() {
                   onClick={checkAllProduct}
                 />
               </Col>
-              <Col xs={6} className="fw-bold">Product(s)</Col>
-              <Col xs={1} className="text-center fw-bold">Unit Price</Col>
-              <Col xs={2} className="text-center fw-bold">Quantity</Col>
-              <Col xs={1} className="text-center fw-bold">Total Price</Col>
-              <Col xs={1} className="text-center fw-bold">Actions</Col>
+              <Col lg={6} xs={9} className="fw-bold">Product(s)</Col>
+              <Col lg={1} xs={0} className="text-center fw-bold d-lg-block d-none">Unit Price</Col>
+              <Col lg={2} xs={0} className="text-center fw-bold d-lg-block d-none">Quantity</Col>
+              <Col lg={1} xs={0} className="text-center fw-bold d-lg-block d-none">Total Price</Col>
+              <Col lg={1} xs={0} className="text-center fw-bold d-lg-block d-none">Actions</Col>
             </Row>
           </div>
           {/* Loop r chỉnh cái name với id theo cái j cũng được mẫu shopping-cart-checkbox... */}
@@ -63,26 +63,11 @@ function ShoppingCartPage() {
 
         <div className="mt-5 border py-4 bg-white rounded">
           <Row className="d-flex align-items-center ">
-            <Col xs={1} className="text-center">
-                <Form.Check
-                  inline
-                  name="shopping-cart-checkbox-all"
-                  type="checkbox"
-                  id="shopping-cart-checkbox-all"
-                />
-
-            </Col>
-            <Col xs={5}>
-              <div className="d-flex">
-                <div className={clsx("mx-3 fs-5 fw-semibold", style["hover"])} style={{ cursor: "pointer" }}>Select All ()</div>
-                <div className={clsx("mx-3 fs-5 fw-semibold", style["hover"])} style={{ cursor: "pointer" }}>Delete All</div>
-              </div>
-            </Col>
-            <Col xs={6} className="d-flex align-items-center justify-content-end">
+            <Col xs={12} className="d-flex align-items-center justify-content-end">
               <div className="fs-5 fw-semibold">Total:</div>
               <div className="fs-4 ms-3 me-5 fw-bold">{'$' + sum}</div>
               <Link to = "/checkout" state={sum}>
-                <button className={clsx(style["checkout"], "me-5")}>Check Out</button>
+                <button className={clsx(style["checkout"], "me-5", "px-2 py-2")}>Check Out</button>
               </Link>
             </Col>
           </Row>

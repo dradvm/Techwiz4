@@ -76,46 +76,48 @@ function PlantInformation() {
   }
   let details = Object.entries(product.plantDetails);
   return (
-    <Container >
-      <Stack >
-        <Row className="gx-2">
-          <Col xs={2}>
+    <Container className="my-5">
+      
+        <Row className="gx-lg-2 gx-0">
+          <Col lg={2} xs = {0} className="d-lg-block d-none">
             <Stack>
               {imgSrcs.map((src, index) =>
                 <div className={clsx("d-flex align-items-center justify-content-center mb-4")} key={index}>
-                  <img className="w-75 border" src={src} alt="small-img" style={{ height: "200px" }} imgindex={index} onClick={(e) => changeImg(e)}/>
+                  <img className="w-75 border" src={src} alt="small-img" style={{ height: "200px" }} imgindex={index} onClick={(e) => changeImg(e)} loading="lazy"/>
                 </div>
               )}
             </Stack>
           </Col>
-          <Col xs={5}>
+          <Col lg={5} xs = {12} className="">
             <div className="d-flex align-items-center justify-content-center" style={{height: "600px"}}>
-              <img className="w-100 h-100 border" src={curImg} alt="small-img" />
+              <img className="w-100 h-100 border" src={curImg} alt="small-img" loading="lazy"/>
             </div>
           </Col>
-          <Col xs={5}>
-            <Stack className="ms-3 my-3" gap={2}>
+          <Col lg={5} xs = {12} className="">
+            <Stack className="ms-lg-3 ms-0 my-3" gap={2}>
               <h3>{product.name}</h3>
-              <div className="d-flex">
+              <div className="d-flex flex-lg-row flex-column">
                 <div className="d-flex align-items-center">
-                  <div className="d-flex align-items-center">
-                    {product.ratings}
+                  <div className="mb-lg-0 mb-2 d-flex align-items-center">
+                    
+                    <div className=" fw-semibold">{product.ratings}</div>
                     <div className="ms-2">
                       {ratingStars}
                     </div>
                   </div>
                 </div>
-                <div className="mx-3">|</div>
-                <div className="d-flex align-items-center">
-                  <div className="">
-                    {product.numberOfReviews + ' Ratings'}
+                <div className="mx-3 d-lg-block d-none">|</div>
+                <div className="mb-lg-0 mb-2 d-flex align-items-center">
+                  <div className="d-flex">
+                    <div className=" fw-semibold">{product.numberOfReviews}</div>
+                    <div className="ms-2">Ratings</div>
                   </div>
                 </div>
-                <div className="mx-3">|</div>
-                <div className="d-flex align-items-center">
-                  <div className="me-3">
-                  {product.sales + ' Sales'}
-                  </div>
+                <div className="mx-3 d-lg-block d-none">|</div>
+                <div className="mb-lg-0 mb-2 d-flex align-items-center me-3">
+                  
+                  <div className=" fw-semibold">{product.sales}</div>
+                  <div className="ms-2">Sales</div>
                 </div>
               </div>
               <div className="py-3 px-4 bg-primary-color text-light mt-4 d-flex justify-content-between">
@@ -139,7 +141,7 @@ function PlantInformation() {
                   </Button>
                 </InputGroup>
                 <div onClick={addToCart}>
-                  <MyButton size="lg" msg="ADD TO CART"/>
+                  <MyButton size="nm" msg="ADD TO CART"/>
                 </div>
               </div>
               <Accordion defaultActiveKey="0">
@@ -189,7 +191,6 @@ function PlantInformation() {
             </Stack>
           </Col>
         </Row>
-      </Stack>
     </Container>
   );
 }

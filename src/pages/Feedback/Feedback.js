@@ -5,7 +5,8 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import MyButton from "../../components/MyButton/MyButton";
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
+import { responsiveContext } from "../../App";
 function Feedback() {
   let fNameRef = useRef(null);
   let lNameRef = useRef(null);
@@ -18,6 +19,7 @@ function Feedback() {
   const [quality, setQuality] = useState(0);
   const [delivery, setDelivey] = useState(0);
   const [msg, setMsg] = useState('');
+  const {isDesktop} = useContext(responsiveContext)
   function fNameEnter(e)
   {
     if (e.key === 'Enter')
@@ -65,7 +67,7 @@ function Feedback() {
     setMsg('');
   }
   return (
-    <Container className={clsx("d-flex justify-content-center w-50 border my-5 text-white", style["feedback"])}>
+    <Container className={clsx("d-flex justify-content-center border my-5 text-white", style["feedback"] , isDesktop ? "w-50" : "w-100")}>
       <Stack className={clsx("p-5",style["feedback__body"])}>
         <h1>Customer Satisfaction Survey</h1>
         <Row className="mt-5">
