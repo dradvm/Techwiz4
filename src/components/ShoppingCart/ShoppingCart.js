@@ -13,8 +13,11 @@ function ShoppingCart() {
         <div className={clsx(style["shopping-cart"])}>
             <div className="px-4 py-2 border-bottom fw-light text-start">Your Cart</div>
             <div className={clsx(style["shopping-cart__body"])}>
-                <div className="w-100" style={{height: "180px"}}><img src={emptyCart} alt="empty-cart" className="w-75" /></div>
-                {show.map((item, index) => <ShoppingCartItem key={index} product={item}></ShoppingCartItem>)}
+                {
+                    show.length === 0 ? 
+                    <div className="w-100" style={{height: "180px"}}><img src={emptyCart} alt="empty-cart" className="w-75" /></div> : 
+                    show.map((item, index) => <ShoppingCartItem key={index} product={item}></ShoppingCartItem>)
+                }
             </div>
             <div className="border-top d-flex w-100 justify-content-end">
                 <div className="my-3 mx-auto">

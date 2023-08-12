@@ -94,7 +94,7 @@ function ShoppingCartPageItem(props) {
     <div className="border-bottom">
       <MediaQuery minWidth={992}>
         <Row className="d-flex align-items-center py-2">
-          <Col xs={1} className="text-center" onClick={toDetail}>
+          <Col xs={1} className="text-center">
             <Form.Check
               inline
               name={product[1].name}
