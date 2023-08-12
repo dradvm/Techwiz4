@@ -9,16 +9,27 @@ import Item from '../Item/Item';
 import { productList } from '../../functions/Filter'; //Mảng test, thay bằng list thật sau
 import MyButton from '../MyButton/MyButton';
 import { useContext } from 'react';
-import { responsiveContext } from '../../App';
+import { responsiveContext, activeContext } from '../../App';
+import { useNavigate } from 'react-router-dom';
+import backToTop from '../../functions/BackToTop';
 function FeatureItems() {
+  let navigation = useNavigate();
   let featuredProducts = productList.filter((item, index) => (index < 10));
-  const {isDesktop} = useContext(responsiveContext)
+  const {isDesktop} = useContext(responsiveContext);
+  let importedActive = useContext(activeContext);
+  // function toShop()
+  // {
+  //   console.log(4);
+  //   importedActive.setActive('shopping');
+  //   backToTop();
+  //   navigation('/shop');
+  // }
   return (
       <Container className="py-5 bg-white" fluid>
         <Container>
         <div className="d-flex align-items-center justify-content-between">
           <h2 className="text-secondary-color fw-bold">Our Feature</h2>
-          <MyButton msg = "Buy Now" />
+          {/* <MyButton msg = "Buy Now" onClick={toShop}/> */}
         </div>
         <Swiper
           modules={[Autoplay]}

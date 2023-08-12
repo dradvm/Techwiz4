@@ -7,12 +7,14 @@ import MyButton from "../MyButton/MyButton";
 import { Link, useNavigate } from "react-router-dom";
 import { activeContext } from "../../App";
 import { useContext } from "react";
+import backToTop from "../../functions/BackToTop";
 function TopPreviewSection() {
   let navigation = useNavigate();
   let importedActive = useContext(activeContext);
   function toShop()
   {
     importedActive.setActive('shopping');
+    backToTop();
     navigation('/shop');
   }
   return (
