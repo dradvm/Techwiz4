@@ -5,12 +5,12 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import { Col, Container, Row } from "react-bootstrap";
 import img from "@images/vertical-img.jpg"
 import { useContext, useRef, useState } from "react";
-import { checkContext } from "../ShoppingCartPage/ShoppingCartPage";
 import { cartContext } from "../../App";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 function Checkout() {
+  let navigation = useNavigate();
   let location = useLocation();
-  let sum = location.state;
+  let check = JSON.parse(location.state);
   const [email, setEmail] = useState('');
   const [credit, setCredit] = useState('');
   const [date, setDate] = useState('');
@@ -19,8 +19,15 @@ function Checkout() {
   let creditRef = useRef(null);
   let dateRef = useRef(null);
   let cvvRef = useRef(null);
-  const importedCheck = useContext(checkContext);
   const importedCart = useContext(cartContext);
+  let sum = importedCart.cart.reduce((total, curr, index) => 
+  {
+    if (check[index])
+    {
+      return total + curr[0] * curr[1].price;
+    }
+    return total;
+  }, 0).toFixed(2);
   function emailEnter(e)
   {
     if (e.key === 'Enter')
@@ -78,10 +85,9 @@ function Checkout() {
       cvvRef.current.focus();
       return;
     }
-    //let details = importedCart.cart.filter((item, index) => importedCheck.check[index]);
-    //let newCart = importedCart.cart.filter((item, index) => !importedCheck.check[index]);
+    let details = importedCart.cart.filter((item, index) => check[index]);
+    let newCart = importedCart.cart.filter((item, index) => !check[index]);
     importedCart.setCart(newCart);
-    importedCheck.setCheck(newCart.map(() => true));
     let pay =
     {
       email: email,
@@ -89,14 +95,11 @@ function Checkout() {
       expDate: date,
       cvv: cvv,
       value: sum,
-      //details: details
+      details: details
     };
     let payDetails = (JSON.parse(localStorage.getItem('payDetails')) || []);
     localStorage.setItem('payDetails', JSON.stringify([...payDetails, pay]));
-    setEmail('');
-    setCredit('');
-    setDate('');
-    setcvv('');
+    navigation('/');
   }
   return (
     <Container className={clsx("my-5 p-4  d-flex align-items-center rounded")} style={{ maxWidth: "900px" }}>

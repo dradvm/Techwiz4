@@ -73,7 +73,7 @@ function ShoppingCartPage() {
             <Col xs={12} className="d-flex align-items-center justify-content-end">
               <div className="fs-5 fw-semibold">Total:</div>
               <div className="fs-4 ms-3 me-5 fw-bold">{'$' + sum}</div>
-              <Link onClick={toCheckOut} state={sum}>
+              <Link onClick={toCheckOut} state={JSON.stringify(check)}>
                 <button className={clsx(style["checkout"], "me-lg-5 me-3", "px-2 py-2")}>Check Out</button>
               </Link>
             </Col>
